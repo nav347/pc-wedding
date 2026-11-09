@@ -26,6 +26,11 @@
   .count b { display:block; font-size:1.6rem; font-family:"Cormorant Garamond",serif; }
   .count span { font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--soft); }
   .note { margin-top:30px; color:var(--soft); font-size:.95rem; line-height:1.6; }
+  .events { display:grid; gap:12px; margin-top:28px; text-align:left; }
+  .ev { padding:14px 16px; border-radius:12px; border:1px solid color-mix(in srgb,var(--gold) 30%,transparent); }
+  .ev h3 { font-family:"Cormorant Garamond",serif; font-size:1.3rem; color:var(--gold); }
+  .ev p { color:var(--soft); font-size:.9rem; margin-top:4px; }
+  .ev a { color:var(--gold); }
 </style>
 </head>
 <body>
@@ -36,7 +41,12 @@
     <div class="rule"></div>
     <p class="date">Wednesday, 2 December 2026</p>
     <div class="count" id="count" aria-live="polite"></div>
-    <p class="note">Venue and timings will be shared soon.<br>Your presence and blessings are all we wish for.</p>
+    <section class="events">
+      <div class="ev"><h3>Haldi</h3><p>[Date] · [Time]<br>[Venue name], [City]</p></div>
+      <div class="ev"><h3>Wedding</h3><p>Wednesday, 2 December 2026 · [Muhurtham time]<br>[Venue name], [City] · <a href="#">[Google Maps link]</a></p></div>
+      <div class="ev"><h3>Reception</h3><p>[Date] · [Time]<br>[Venue name], [City]</p></div>
+    </section>
+    <p class="note">[Bride name] &amp; [Groom name]<br>RSVP: [Name] · [Phone]</p>
   </main>
 <script>
   const t = new Date("2026-12-02T00:00:00+05:30").getTime(), el = document.getElementById("count");
