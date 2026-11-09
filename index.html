@@ -293,6 +293,60 @@ footer button.lnk:hover{color:var(--gold-2)}
 .fg div{background:#fff;border:1px solid rgba(212,162,76,.5);border-radius:14px;padding:16px 10px;box-shadow:0 8px 24px rgba(90,15,28,.06)}
 .fg b{display:block;white-space:nowrap;font-family:"Cormorant Garamond",serif;font-size:1.9rem;color:var(--maroon);line-height:1.1}
 .fg span{font-size:.82rem;color:var(--soft)}
+
+/* ---------- ROUND 4: scratch, selfie, flower shower ---------- */
+.invite{padding-bottom:50px}
+.scratch{padding:0 20px 90px;text-align:center;background:var(--cream)}
+.scratch .lbl{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
+.sc-wrap{position:relative;width:min(100%,420px);height:200px;margin:0 auto;border-radius:16px;overflow:hidden;border:2px solid var(--gold);
+  box-shadow:0 20px 50px rgba(90,15,28,.18);background:linear-gradient(135deg,#fffdf7,#fbf1da 50%,#fffdf7)}
+.sc-under{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:0 14px}
+.sc-under .d{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:clamp(1.25rem,6vw,2rem);line-height:1.2;color:var(--maroon)}
+.sc-under .s{font-family:"Great Vibes",cursive;font-size:1.7rem;color:#a8772a}
+.sc-wrap.done .sc-under{animation:pop .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.06)}100%{transform:none}}
+#scratch{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .7s;display:block}
+.sc-shine{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sc-shine::before{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%{left:-60%}55%,100%{left:130%}}
+.sc-wrap.done .sc-shine{display:none}
+
+#shakeHint{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translate(-50%,20px);z-index:95;min-height:44px;max-width:calc(100vw - 32px);
+  padding:11px 22px;border-radius:999px;border:1px solid rgba(243,212,140,.85);background:rgba(90,15,28,.94);color:var(--gold-2);font:500 .95rem Jost,system-ui,sans-serif;
+  cursor:pointer;opacity:0;transition:opacity .5s,transform .5s;box-shadow:0 10px 30px rgba(0,0,0,.35);white-space:nowrap}
+#shakeHint.show{opacity:1;transform:translate(-50%,0)}
+#shakeHint:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
+#shower{position:fixed;top:0;left:0;width:100vw;width:100dvw;height:100vh;height:100dvh;pointer-events:none;z-index:121}
+
+.selfie{background:linear-gradient(180deg,#fff3df,var(--cream));text-align:center}
+.selfie .msg{max-width:480px;margin:0 auto 26px;color:var(--soft);line-height:1.7}
+.btn.big{min-height:52px;padding:15px 28px;font-size:1rem}
+.bm .pnl{max-width:420px;padding:16px 16px 18px;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);overflow-y:auto}
+.bm h3{text-align:center;padding-left:44px}
+.bm .stage{position:relative;width:min(100%,300px);width:min(100%,calc((100dvh - 250px)*.75));min-width:210px;aspect-ratio:3/4;margin:4px auto 12px;border-radius:12px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 30%,#7a1628,#2c060d)}
+.bm .stage video,.bm .stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.bm .stage video{object-fit:cover;transform:scaleX(-1)}
+.bm:not([data-state=live]) #bVid{display:none}
+.bm[data-state=shot] #bOv{display:none}
+#bRes{display:none}.bm[data-state=shot] #bRes{display:block}
+.bm .alt{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:22px;text-align:center;color:var(--cream);z-index:2}
+.bm .alt p{font-size:.95rem;line-height:1.5;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.bm[data-state=alt] .alt{display:flex}
+.bm .ctl{display:none;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.bm[data-state=live] .live-ctl,.bm[data-state=shot] .shot-ctl{display:flex}
+.bm .btn.gold,.bm .btn.ghost{margin:0}
+.shut{width:72px;height:72px;border-radius:50%;border:4px solid #fff;background:linear-gradient(135deg,var(--gold-2),var(--gold));box-shadow:0 0 0 3px var(--gold),0 8px 20px rgba(90,15,28,.3);cursor:pointer}
+.shut:disabled{opacity:.5}
+.shut:focus-visible{outline:3px solid var(--maroon);outline-offset:4px}
+.cd{position:absolute;inset:0;display:grid;place-items:center;font:700 7rem "Cormorant Garamond",serif;color:#fff;text-shadow:0 4px 24px rgba(90,15,28,.8);pointer-events:none;z-index:3}
+.cd.tick{animation:cdp .9s ease-out}
+@keyframes cdp{0%{transform:scale(1.6);opacity:0}25%{opacity:1}100%{transform:scale(.9);opacity:.85}}
+.fl{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:4}
+.bm .tip{font-size:.8rem;color:var(--soft);text-align:center;margin-top:10px;min-height:1.2em}
+.vh{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.bm .modal-x{float:right}
 </style>
 </head>
 <body>
@@ -358,6 +412,15 @@ footer button.lnk:hover{color:var(--gold-2)}
     <p class="lead serif">With joy in our hearts,<br>we invite you to celebrate the wedding of</p>
     <p class="names script">PC <span class="amp">&amp;</span> Neha</p>
     <p class="fam">Your presence will make the day complete.<br>Full invitation details to follow<br><span class="serif" lang="hi" style="display:block;margin-top:16px;font-size:1.15rem;color:var(--maroon)">आपका आशीर्वाद हमारे लिए अनमोल है<br><em style="font-size:.95rem;color:var(--soft)">Your blessings are priceless to us</em></span></p>
+  </div>
+</section>
+
+<section class="scratch">
+  <p class="lbl">A little surprise</p>
+  <div class="sc-wrap" id="scWrap">
+    <div class="sc-under"><span class="d">Wednesday · 2 December 2026</span><span class="s">Shubh Vivah</span></div>
+    <canvas id="scratch" role="img" aria-label="Scratch card. Scratch with your finger to reveal the wedding date."></canvas>
+    <div class="sc-shine" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -438,6 +501,14 @@ footer button.lnk:hover{color:var(--gold-2)}
   </div>
 </section>
 
+<section class="selfie" id="selfie">
+  <div class="wrap">
+    <div class="head reveal"><h2 class="script">Wedding Selfie</h2><p>Strike a pose, get framed</p></div>
+    <p class="msg reveal">Take a selfie inside a golden marigold frame and share it with the couple's guests.</p>
+    <div class="reveal"><button class="btn gold big" id="bOpen" type="button">📸 Take a wedding selfie</button></div>
+  </div>
+</section>
+
 <section class="bless">
   <div class="wrap">
     <div class="head reveal"><h2 class="script">Send Your Blessings</h2><p>Tap a wish for the couple</p></div>
@@ -483,6 +554,24 @@ footer button.lnk:hover{color:var(--gold-2)}
   <label for="invLink">Their link</label><input id="invLink" readonly>
   <div class="row"><button class="btn gold" id="invCopy" type="button">Copy link</button><a class="btn ghost" id="invWa" target="_blank" rel="noopener">WhatsApp</a><button class="btn ghost" id="invSh" type="button" hidden>Share…</button></div>
   <p class="ok" id="invOk" aria-live="polite"></p>
+</div></div>
+<button id="shakeHint" type="button" hidden>Shake your phone 🌸</button>
+<canvas id="shower" aria-hidden="true"></canvas>
+<div class="modal bm" id="booth" role="dialog" aria-modal="true" aria-labelledby="bT" data-state="alt"><div class="pnl">
+  <button class="x" id="bX" type="button" aria-label="Close the photo booth">&times;</button>
+  <h3 id="bT">Wedding Selfie</h3>
+  <div class="stage" id="bStage">
+    <video id="bVid" autoplay muted playsinline aria-label="Live camera preview"></video>
+    <canvas id="bRes" aria-label="Your wedding selfie"></canvas>
+    <canvas id="bOv" width="900" height="1200" aria-hidden="true"></canvas>
+    <div class="alt"><p id="bMsg" role="status">Opening camera…</p><button class="btn gold" type="button" data-pick>📷 Take or choose a photo</button></div>
+    <div class="cd" id="bCd" hidden role="status" aria-live="assertive"></div>
+    <div class="fl" id="bFl" aria-hidden="true"></div>
+  </div>
+  <div class="ctl live-ctl"><button class="btn ghost" type="button" data-pick>🖼 Choose photo</button><button class="shut" id="bShut" type="button" aria-label="Take the photo (3 second countdown)"></button></div>
+  <div class="ctl shot-ctl"><a class="btn gold" id="bDl" download="pc-neha-wedding-selfie.png" href="#">⬇ Download</a><button class="btn ghost" id="bShare" type="button" hidden>↗ Share</button><button class="btn ghost" id="bRe" type="button">↺ Retake</button></div>
+  <p class="tip" id="bTip" aria-live="polite"></p>
+  <input class="vh" id="bFile" type="file" accept="image/*" capture="user" aria-label="Take or choose a photo" tabindex="-1">
 </div></div>
 <script>
 // countdown
@@ -714,6 +803,261 @@ if (navigator.share){ iS.hidden = false; iS.addEventListener("click", () => navi
     const l = document.createElement("span"), d = 14 + Math.random()*10; l.className = "lantern";
     l.style.cssText = "left:" + Math.random()*94 + "%;animation-duration:" + d + "s;--lx:" + (Math.random()-.5)*120 + "px;--lr:" + (Math.random()-.5)*20 + "deg;transform:scale(" + (.7+Math.random()*.7) + ")";
     sec.appendChild(l); setTimeout(() => l.remove(), d*1000); }, 1600);
+})();
+
+// ---------- ROUND 4: scratch card, selfie booth, flower shower ----------
+const vib = p => { try { navigator.vibrate && navigator.vibrate(p); } catch (e) {} };
+
+// ===== 1. Scratch to reveal =====
+(function(){
+  const cv = document.getElementById("scratch"), wrap = document.getElementById("scWrap"), c = cv.getContext("2d", {willReadFrequently:true});
+  let W = 0, H = 0, dpr = 1, done = false, touched = false, down = false, lx = 0, ly = 0, lastChk = 0;
+  const R = Math.random;
+  function star(x, y, r){
+    const g = c.createRadialGradient(x, y, 0, x, y, r * 1.6); g.addColorStop(0, "rgba(255,255,255,.9)"); g.addColorStop(1, "rgba(255,255,255,0)");
+    c.fillStyle = g; c.beginPath(); c.arc(x, y, r * 1.6, 0, 6.283); c.fill();
+    c.fillStyle = "#fff"; c.beginPath();
+    for (let i = 0; i < 8; i++){ const a = i * Math.PI / 4, rr = i % 2 ? r * .22 : r; c.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); }
+    c.closePath(); c.fill();
+  }
+  function foil(){
+    c.globalCompositeOperation = "source-over"; c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, W, H);
+    const g = c.createLinearGradient(0, 0, W, H);
+    [[0,"#b98a34"],[.2,"#f3d48c"],[.38,"#c99a3f"],[.55,"#fff0b8"],[.72,"#d4a24c"],[1,"#a8772a"]].forEach(s => g.addColorStop(s[0], s[1]));
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    c.lineWidth = .6;
+    for (let i = 0; i < 280; i++){ const x = R() * W, y = R() * H; c.strokeStyle = R() < .5 ? "rgba(255,255,255," + R() * .2 + ")" : "rgba(120,80,20," + R() * .16 + ")";
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + 30 + R() * 160, y + (R() - .5) * 2); c.stroke(); }
+    for (let i = 0; i < W * H / 16; i++){ c.fillStyle = R() < .5 ? "rgba(255,255,255,.2)" : "rgba(90,50,10,.13)"; c.fillRect(R() * W, R() * H, 1, 1); }
+    c.strokeStyle = "rgba(255,255,255,.16)"; c.lineWidth = 1;
+    for (let x = -H; x < W; x += 24){ c.beginPath(); c.moveTo(x, H); c.lineTo(x + H, 0); c.stroke(); c.beginPath(); c.moveTo(x, 0); c.lineTo(x + H, H); c.stroke(); }
+    c.strokeStyle = "rgba(255,248,220,.75)"; c.lineWidth = 2; c.strokeRect(9, 9, W - 18, H - 18);
+    c.strokeStyle = "rgba(122,74,16,.5)"; c.lineWidth = 1; c.strokeRect(14, 14, W - 28, H - 28);
+    for (let i = 0; i < 16; i++) star(R() * W, R() * H, 3 + R() * 5);
+    const fs = Math.min(34, W * .085); c.font = "italic 600 " + fs + "px 'Cormorant Garamond', Georgia, serif"; c.textAlign = "center"; c.textBaseline = "middle";
+    const t = "Scratch to reveal ✨";
+    c.fillStyle = "rgba(255,255,255,.7)"; c.fillText(t, W / 2 + 1, H / 2 + 2);
+    c.fillStyle = "rgba(90,45,8,.88)"; c.fillText(t, W / 2, H / 2);
+  }
+  function fit(){
+    W = cv.clientWidth; H = cv.clientHeight; if (!W) return;
+    dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); foil();
+  }
+  fit();
+  addEventListener("resize", () => { if (!done && !touched) fit(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!done && !touched) fit(); });
+  const pt = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * (W / r.width), (e.clientY - r.top) * (H / r.height)]; };
+  function seg(x0, y0, x1, y1){
+    c.globalCompositeOperation = "destination-out"; c.strokeStyle = "#000"; c.lineCap = "round"; c.lineJoin = "round"; c.lineWidth = 42;
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1 + .01, y1); c.stroke();
+  }
+  function check(){
+    if (done) return; const w = cv.width, h = cv.height, d = c.getImageData(0, 0, w, h).data, st = Math.max(1, Math.round(dpr * 5));
+    let clear = 0, tot = 0;
+    for (let y = 0; y < h; y += st) for (let x = 0; x < w; x += st){ tot++; if (d[(y * w + x) * 4 + 3] < 40) clear++; }
+    if (clear / tot >= .5) reveal();
+  }
+  function reveal(){
+    done = true; down = false; wrap.classList.add("done"); cv.style.opacity = "0"; cv.style.pointerEvents = "none";
+    setTimeout(() => { cv.style.display = "none"; }, 750);
+    const r = wrap.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, RM ? 50 : 220); vib([30, 40, 30]);
+  }
+  cv.addEventListener("pointerdown", e => {
+    if (done) return; e.preventDefault(); down = touched = true; try { cv.setPointerCapture(e.pointerId); } catch (x) {}
+    [lx, ly] = pt(e); seg(lx, ly, lx, ly);
+  });
+  cv.addEventListener("pointermove", e => {
+    if (!down || done) return; e.preventDefault();
+    const evs = (e.getCoalescedEvents && e.getCoalescedEvents()) || []; for (const ce of (evs.length ? evs : [e])){ const [x, y] = pt(ce); seg(lx, ly, x, y); lx = x; ly = y; }
+    const n = performance.now(); if (n - lastChk > 90){ lastChk = n; check(); }
+  });
+  const up = () => { if (!down) return; down = false; check(); };
+  cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+})();
+
+// ===== 2. Selfie booth =====
+(function(){
+  const $ = id => document.getElementById(id);
+  const m = $("booth"), vid = $("bVid"), ov = $("bOv"), res = $("bRes"), cd = $("bCd"), fl = $("bFl"), shut = $("bShut"), dl = $("bDl"), shBtn = $("bShare"),
+    file = $("bFile"), msg = $("bMsg"), tip = $("bTip"), openB = $("bOpen");
+  const W = 900, H = 1200, NAME = "pc-neha-wedding-selfie.png";
+  let stream = null, tok = 0, lastF = null, busy = false, blobUrl = "", shareFile = null, slow = 0;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  const state = s => { m.dataset.state = s; };
+
+  function frame(c, w, h){
+    c.save();
+    let g = c.createLinearGradient(0, h * .7, 0, h); g.addColorStop(0, "rgba(60,8,18,0)"); g.addColorStop(1, "rgba(60,8,18,.9)"); c.fillStyle = g; c.fillRect(0, h * .7, w, h * .3);
+    g = c.createLinearGradient(0, 0, 0, h * .3); g.addColorStop(0, "rgba(60,8,18,.5)"); g.addColorStop(1, "rgba(60,8,18,0)"); c.fillStyle = g; c.fillRect(0, 0, w, h * .3);
+    const gold = c.createLinearGradient(0, 0, w, h);
+    [[0,"#a8772a"],[.25,"#f3d48c"],[.5,"#d4a24c"],[.75,"#fff2c4"],[1,"#a8772a"]].forEach(s => gold.addColorStop(s[0], s[1]));
+    const b = w * .02; c.strokeStyle = gold; c.lineWidth = w * .024; c.strokeRect(b, b, w - 2 * b, h - 2 * b);
+    c.lineWidth = w * .004; c.strokeStyle = "rgba(255,242,196,.85)"; c.strokeRect(b * 2.6, b * 2.6, w - 5.2 * b, h - 5.2 * b);
+    c.fillStyle = gold;
+    for (const [x, y] of [[b * 2.6, b * 2.6], [w - b * 2.6, b * 2.6], [b * 2.6, h - b * 2.6], [w - b * 2.6, h - b * 2.6]]){
+      c.beginPath(); c.moveTo(x, y - w * .02); c.lineTo(x + w * .02, y); c.lineTo(x, y + w * .02); c.lineTo(x - w * .02, y); c.closePath(); c.fill(); }
+    // marigold garland across the top
+    const P0 = [0, h * .035], P1 = [w / 2, h * .22], P2 = [w, h * .035], n = 16;
+    const at = t => [(1 - t) * (1 - t) * P0[0] + 2 * (1 - t) * t * P1[0] + t * t * P2[0], (1 - t) * (1 - t) * P0[1] + 2 * (1 - t) * t * P1[1] + t * t * P2[1]];
+    c.strokeStyle = "#6b4a14"; c.lineWidth = w * .004; c.beginPath(); c.moveTo(P0[0], P0[1]); c.quadraticCurveTo(P1[0], P1[1], P2[0], P2[1]); c.stroke();
+    const fr = w * .038;
+    for (let i = 0; i <= n; i++){
+      const [x, y] = at(i / n);
+      c.fillStyle = i % 2 ? "#2f7d3a" : "#3c9148";
+      for (const s of [-1, 1]){ c.save(); c.translate(x, y); c.rotate(s * .9); c.beginPath(); c.ellipse(0, fr * 1.05, fr * .3, fr * .7, 0, 0, 6.283); c.fill(); c.restore(); }
+    }
+    for (let i = 0; i <= n; i++){
+      const [x, y] = at(i / n), c1 = i % 2 ? "#ff9f1c" : "#ffb703";
+      if (i % 3 === 1){ c.strokeStyle = "#6b4a14"; c.lineWidth = w * .003; c.beginPath(); c.moveTo(x, y); c.lineTo(x, y + fr * 2.4); c.stroke();
+        c.fillStyle = "#e8577a"; c.beginPath(); c.arc(x, y + fr * 2.5, fr * .45, 0, 6.283); c.fill(); }
+      for (let k = 0; k < 10; k++){ const a = k * .6283; c.fillStyle = k % 2 ? c1 : "#f77f00"; c.beginPath(); c.arc(x + Math.cos(a) * fr * .62, y + Math.sin(a) * fr * .62, fr * .46, 0, 6.283); c.fill(); }
+      c.fillStyle = "#e85d04"; c.beginPath(); c.arc(x, y, fr * .5, 0, 6.283); c.fill();
+      c.fillStyle = "#ffd166"; c.beginPath(); c.arc(x, y, fr * .2, 0, 6.283); c.fill();
+    }
+    // text
+    c.textAlign = "center"; c.textBaseline = "middle"; c.shadowColor = "rgba(0,0,0,.6)"; c.shadowBlur = w * .012;
+    const fit = (t, font, max, size) => { let s = size; do { c.font = font.replace("#", s); s -= 2; } while (c.measureText(t).width > max && s > 14); };
+    const main = "PC & Neha · 2 December 2026"; fit(main, "600 #px 'Cormorant Garamond', Georgia, serif", w * .84, w * .062);
+    c.fillStyle = "#fff2c4"; c.fillText(main, w / 2, h * (guest ? .94 : .925));
+    if (guest){ const gt = guest + " at PC & Neha’s wedding"; fit(gt, "italic 400 #px 'Cormorant Garamond', Georgia, serif", w * .84, w * .054);
+      c.fillStyle = "#f3d48c"; c.fillText(gt, w / 2, h * .885); }
+    c.restore();
+  }
+  const fontsReady = () => Promise.race([wait(1500), Promise.all([document.fonts.load("600 40px 'Cormorant Garamond'"), document.fonts.load("italic 400 40px 'Cormorant Garamond'")]).catch(() => 0)]);
+  function drawOv(){ const c = ov.getContext("2d"); c.clearRect(0, 0, W, H); frame(c, W, H); }
+  fontsReady().then(drawOv); drawOv();
+
+  function compose(src, sw, sh, mirror){
+    res.width = W; res.height = H; const c = res.getContext("2d"); c.fillStyle = "#2c060d"; c.fillRect(0, 0, W, H);
+    const dr = W / H; let sx = 0, sy = 0, cw = sw, ch = sh;
+    if (sw / sh > dr){ cw = sh * dr; sx = (sw - cw) / 2; } else { ch = sw / dr; sy = (sh - ch) / 2; }
+    c.save(); if (mirror){ c.translate(W, 0); c.scale(-1, 1); } c.drawImage(src, sx, sy, cw, ch, 0, 0, W, H); c.restore();
+    frame(c, W, H);
+    dl.href = res.toDataURL("image/png"); shBtn.hidden = true; shareFile = null;
+    res.toBlob(b => { if (!b) return; if (blobUrl) URL.revokeObjectURL(blobUrl); blobUrl = URL.createObjectURL(b); dl.href = blobUrl;
+      try { const f = new File([b], NAME, {type: "image/png"}); if (navigator.canShare && navigator.canShare({files: [f]})){ shareFile = f; shBtn.hidden = false; } } catch (e) {} }, "image/png");
+    tip.textContent = "Saved? Press and hold the photo if Download does not start."; state("shot");
+    burst(innerWidth / 2, innerHeight * .4, RM ? 30 : 90); vib(40);
+  }
+
+  function stopCam(){ if (stream){ stream.getTracks().forEach(t => t.stop()); stream = null; } try { vid.srcObject = null; } catch (e) {} }
+  async function startCam(){
+    const my = ++tok; clearTimeout(slow); state("alt"); msg.textContent = "Opening camera…";
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){ msg.textContent = "The camera is not available here. You can still take or choose a photo."; return; }
+    slow = setTimeout(() => { if (my === tok && !stream) msg.textContent = "Camera is taking a while. You can also take or choose a photo."; }, 6000);
+    try {
+      const s = await navigator.mediaDevices.getUserMedia({video: {facingMode: "user", width: {ideal: 1280}, height: {ideal: 1280}}, audio: false});
+      if (my !== tok || !m.classList.contains("show")){ s.getTracks().forEach(t => t.stop()); return; }
+      clearTimeout(slow); stream = s; vid.srcObject = s; vid.muted = true;
+      await new Promise(r => { if (vid.readyState >= 1) r(); else { vid.onloadedmetadata = r; setTimeout(r, 3000); } });
+      try { await vid.play(); } catch (e) {}
+      if (my !== tok) return; state("live"); shut.disabled = false; shut.focus();
+    } catch (e) {
+      if (my !== tok) return; clearTimeout(slow);
+      msg.textContent = "We could not open the camera. No problem: take or choose a photo and we will add the frame.";
+    }
+  }
+  async function shoot(){
+    if (busy || !stream) return; busy = true; shut.disabled = true; const my = tok;
+    try {
+      for (let n = 3; n > 0; n--){
+        cd.hidden = false; cd.textContent = n; cd.classList.remove("tick"); void cd.offsetWidth; cd.classList.add("tick"); vib(15);
+        await wait(900); if (my !== tok || !m.classList.contains("show")) return;
+      }
+      cd.hidden = true;
+      if (!vid.videoWidth) return;
+      fl.style.transition = "none"; fl.style.opacity = "1"; void fl.offsetWidth; fl.style.transition = "opacity .5s"; fl.style.opacity = "0";
+      compose(vid, vid.videoWidth, vid.videoHeight, true); dl.focus();
+    } finally { cd.hidden = true; busy = false; shut.disabled = false; }
+  }
+  function onFile(){
+    const f = file.files && file.files[0]; if (!f) return; const img = new Image(), u = URL.createObjectURL(f);
+    img.onload = () => { compose(img, img.naturalWidth, img.naturalHeight, false); URL.revokeObjectURL(u); };
+    img.onerror = () => { URL.revokeObjectURL(u); tip.textContent = "That photo could not be opened. Please try another."; };
+    img.src = u; file.value = "";
+  }
+  function open(){
+    lastF = document.activeElement; m.classList.add("show"); document.body.style.overflow = "hidden"; tip.textContent = ""; startCam(); $("bX").focus();
+  }
+  function close(){
+    tok++; clearTimeout(slow); stopCam(); cd.hidden = true; busy = false; m.classList.remove("show"); document.body.style.overflow = ""; lastF && lastF.focus && lastF.focus();
+  }
+  openB.addEventListener("click", open);
+  $("bX").addEventListener("click", close);
+  m.addEventListener("click", e => { if (e.target === m) close(); });
+  shut.addEventListener("click", shoot);
+  file.addEventListener("change", onFile);
+  m.querySelectorAll("[data-pick]").forEach(b => b.addEventListener("click", () => file.click()));
+  $("bRe").addEventListener("click", () => { tip.textContent = ""; if (stream){ state("live"); shut.focus(); } else { state("alt"); msg.textContent = "Take or choose another photo."; } });
+  shBtn.addEventListener("click", () => { if (shareFile) navigator.share({files: [shareFile], title: "PC & Neha's wedding", text: "At PC & Neha's wedding · 2 December 2026"}).catch(() => {}); });
+  addEventListener("keydown", e => {
+    if (!m.classList.contains("show")) return;
+    if (e.key === "Escape"){ close(); return; }
+    if (e.key === "Tab"){
+      const f = [...m.querySelectorAll("button,a[href]")].filter(x => x.offsetParent !== null && !x.disabled); if (!f.length) return;
+      const i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0){ e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && (i === f.length - 1 || i < 0)){ e.preventDefault(); f[0].focus(); }
+    }
+  });
+  addEventListener("pagehide", stopCam);
+})();
+
+// ===== 3. Shake or tap for a flower shower =====
+(function(){
+  const cv = document.getElementById("shower"), c = cv.getContext("2d"), hint = document.getElementById("shakeHint");
+  let ps = [], rf = 0, last = 0, lastAt = 0, W = 0, H = 0, shown = false, hideT = 0;
+  const R = Math.random, pick = a => a[R() * a.length | 0];
+  const PETAL = ["#e8577a", "#c2185b", "#f48fb1", "#d81b60", "#ff7aa2", "#b3123f"], MARI = ["#ffb703", "#ff9f1c", "#f77f00", "#ffc233"];
+  function fit(){ const d = Math.min(window.devicePixelRatio || 1, 2); W = document.documentElement.clientWidth; H = innerHeight; cv.width = Math.round(W * d); cv.height = Math.round(H * d); c.setTransform(d, 0, 0, d, 0, 0); }
+  function draw(p){
+    c.save(); c.translate(p.x, p.y); c.rotate(p.r); c.scale(1, Math.max(.25, Math.abs(Math.cos(p.f)))); c.globalAlpha = p.a; const s = p.s;
+    if (p.t){
+      for (let k = 0; k < 8; k++){ const a = k * .785; c.fillStyle = k % 2 ? p.c : "#f77f00"; c.beginPath(); c.arc(Math.cos(a) * s * .6, Math.sin(a) * s * .6, s * .42, 0, 6.283); c.fill(); }
+      c.fillStyle = "#e85d04"; c.beginPath(); c.arc(0, 0, s * .45, 0, 6.283); c.fill();
+    } else {
+      c.fillStyle = p.c; c.beginPath(); c.moveTo(0, -s); c.bezierCurveTo(s * .95, -s * .6, s * .8, s * .55, 0, s); c.bezierCurveTo(-s * .8, s * .55, -s * .95, -s * .6, 0, -s); c.fill();
+      c.strokeStyle = "rgba(255,255,255,.35)"; c.lineWidth = 1; c.beginPath(); c.moveTo(0, -s * .7); c.quadraticCurveTo(s * .15, 0, 0, s * .7); c.stroke();
+    }
+    c.restore();
+  }
+  function loop(now){
+    const dt = Math.min(3, (now - last) / 16.67 || 1); last = now; c.clearRect(0, 0, W, H);
+    ps = ps.filter(p => p.y < H + 40);
+    for (const p of ps){ p.ph += .03 * dt; p.x += (p.vx + Math.sin(p.ph) * p.sw) * dt; p.y += p.vy * dt; p.r += p.vr * dt; p.f += p.vf * dt; draw(p); }
+    rf = ps.length ? requestAnimationFrame(loop) : 0; if (!rf) c.clearRect(0, 0, W, H);
+  }
+  function shower(){
+    const n = Date.now(); if (n - lastAt < 3000) return false; lastAt = n; fit();
+    const cnt = RM ? 28 : 170;
+    for (let i = 0; i < cnt; i++){ const t = R() < .35 ? 1 : 0;
+      ps.push({t, c: pick(t ? MARI : PETAL), s: t ? 6 + R() * 5 : 7 + R() * 8, x: R() * W, y: -20 - R() * H * (RM ? .5 : 1.1), vx: (R() - .5) * .8, vy: 2 + R() * 2.8, sw: .4 + R() * 1.2,
+        ph: R() * 6.28, r: R() * 6.28, vr: (R() - .5) * .08, f: R() * 6.28, vf: .03 + R() * .07, a: .85 + R() * .15}); }
+    if (!rf){ last = performance.now(); rf = requestAnimationFrame(loop); }
+    vib([20, 30, 20]); return true;
+  }
+  // shake detection
+  let lx = null, ly = 0, lz = 0, hits = 0, hitT = 0;
+  function onMotion(e){
+    const a = e.accelerationIncludingGravity || e.acceleration; if (!a || a.x == null) return;
+    if (lx !== null){ const d = Math.abs(a.x - lx) + Math.abs(a.y - ly) + Math.abs(a.z - lz);
+      if (d > 30){ const t = Date.now(); if (t - hitT > 700) hits = 0; hitT = t; if (++hits >= 3){ hits = 0; if (shower()) hideHint(); } } }
+    lx = a.x; ly = a.y; lz = a.z;
+  }
+  const needPerm = typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function";
+  if (typeof DeviceMotionEvent !== "undefined" && !needPerm) addEventListener("devicemotion", onMotion);
+  const touchy = matchMedia("(pointer:coarse)").matches;
+  hint.textContent = needPerm ? "Tap & shake 🌸" : touchy ? "Shake your phone 🌸" : "Click for a flower shower 🌸";
+  function hideHint(){ clearTimeout(hideT); hint.classList.remove("show"); setTimeout(() => { hint.hidden = true; }, 600); }
+  hint.addEventListener("click", () => {
+    if (needPerm) DeviceMotionEvent.requestPermission().then(r => { if (r === "granted") addEventListener("devicemotion", onMotion); }).catch(() => {});
+    shower(); hideHint();
+  });
+  function maybeShow(){
+    if (shown || !document.body.classList.contains("opened") || scrollY < hero.offsetHeight * .7) return;
+    shown = true; removeEventListener("scroll", maybeShow); hint.hidden = false; requestAnimationFrame(() => requestAnimationFrame(() => hint.classList.add("show")));
+    hideT = setTimeout(hideHint, 9000);
+  }
+  addEventListener("scroll", maybeShow, {passive: true});
 })();
 </script>
 </body>
