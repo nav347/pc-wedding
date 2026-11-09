@@ -6,15 +6,17 @@
 <title>PC &amp; Neha · 2 December 2026</title>
 <meta name="description" content="Join us to celebrate PC's wedding on Wednesday, 2 December 2026.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="PC &amp; Neha · Shubh Vivah">
 <meta property="og:url" content="https://nav347.github.io/pc-wedding/">
-<meta property="og:image" content="https://nav347.github.io/pc-wedding/og.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="https://nav347.github.io/pc-wedding/og.jpg?v=2">
+<meta property="og:image:secure_url" content="https://nav347.github.io/pc-wedding/og.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="PC &amp; Neha, Shubh Vivah, 02 · 12 · 2026">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PC &amp; Neha are getting married">
-<meta name="twitter:image" content="https://nav347.github.io/pc-wedding/og.png">
+<meta name="twitter:image" content="https://nav347.github.io/pc-wedding/og.jpg?v=2">
 <meta property="og:title" content="PC &amp; Neha are getting married 💍">
 <meta property="og:description" content="Wednesday, 2 December 2026 · You're invited.">
 <meta name="theme-color" content="#5a0f1c">
@@ -496,7 +498,7 @@ document.getElementById("gcal").href = "https://calendar.google.com/calendar/ren
 
 // RSVP on WhatsApp (number to be added)
 const WA_NUMBER = ""; // e.g. "919876543210"
-document.getElementById("wa").href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Hi! I'll be there for PC & Neha's wedding on 2 Dec 🎉");
+document.getElementById("wa").href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Hi! I'll be there for PC & Neha's wedding on 2 Dec 🎉 " + base);
 
 // reveal on scroll
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.15});
@@ -678,7 +680,7 @@ dy.addEventListener("click", () => { lit(true); try { localStorage.setItem("pcn-
 // invite maker
 const inv = document.getElementById("inv"), iN = document.getElementById("invName"), iL = document.getElementById("invLink"), iW = document.getElementById("invWa"), iS = document.getElementById("invSh"), iO = document.getElementById("invOk");
 const base = location.origin + location.pathname;
-function clean(v){ return v.replace(/<[^>]*>/g,"").replace(/s+/g," ").replace(/[<>&"]/g,"").trim().slice(0,40); }
+function clean(v){ return v.replace(/<[^>]*>/g,"").replace(/\s+/g," ").replace(/[<>&"]/g,"").trim().slice(0,40); }
 function upd(){ const n = clean(iN.value), link = base + (n ? "?to=" + encodeURIComponent(n) : "");
   iL.value = link; const msg = (n ? "Dear " + n + ", y" : "Y") + "ou are warmly invited to the wedding of PC & Neha on 2 December 2026. Open your invitation: " + link;
   iW.href = "https://wa.me/?text=" + encodeURIComponent(msg); iL.dataset.msg = msg; }
@@ -693,7 +695,7 @@ addEventListener("keydown", e => { if (e.key === "Escape" && inv.classList.conta
 document.getElementById("invCopy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(iL.value); iO.textContent = "Link copied"; }
   catch (e) { try { iL.select(); document.execCommand("copy"); iO.textContent = "Link copied"; } catch (e2) { iO.textContent = "Press and hold the link to copy"; } } });
-if (navigator.share){ iS.hidden = false; iS.addEventListener("click", () => navigator.share({ title: "PC & Neha's wedding", text: iL.dataset.msg, url: iL.value }).catch(() => {})); }
+if (navigator.share){ iS.hidden = false; iS.addEventListener("click", () => navigator.share({ title: "PC & Neha's wedding", text: iL.dataset.msg }).catch(() => {})); }
 
 // sky lanterns behind RSVP
 (function(){
