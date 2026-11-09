@@ -98,7 +98,7 @@ section{padding:90px 20px;position:relative}
 .ev .where{margin-top:4px;color:var(--soft);font-size:.92rem}
 .ev .tba{display:inline-block;margin-top:12px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);padding:4px 10px;border-radius:999px}
 .st .yr{display:none}
-.flight{display:block;width:min(320px,86vw);margin:-10px auto 34px;overflow:visible}
+.flight{display:block;overflow:visible}
 .ev.main{grid-column:1/-1;background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:var(--cream);border-top:0}
 .ev.main h3{color:var(--gold-2);font-size:2.2rem}
 .ev.main .when{color:var(--cream);font-size:1.1rem}
@@ -275,6 +275,15 @@ footer button.lnk:hover{color:var(--gold-2)}
 .modal .x{float:right;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--soft)}
 .modal .ok{min-height:1.4em;margin-top:10px;font-size:.85rem;color:#2e8b57}
 @media (prefers-reduced-motion:reduce){.diya[aria-pressed=true] .flame,.diya[aria-pressed=true] .glow{animation:none}}
+.st .emo{font-size:1.8rem;line-height:1;margin-bottom:4px}
+.st .flight{margin:12px 0 0;width:100%;max-width:280px}
+.st:nth-child(odd) .flight{margin-left:auto}
+.facts{max-width:760px;margin:30px auto 0;text-align:center}
+.facts .fl{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.fg div{background:#fff;border:1px solid rgba(212,162,76,.5);border-radius:14px;padding:16px 10px;box-shadow:0 8px 24px rgba(90,15,28,.06)}
+.fg b{display:block;white-space:nowrap;font-family:"Cormorant Garamond",serif;font-size:1.9rem;color:var(--maroon);line-height:1.1}
+.fg span{font-size:.82rem;color:var(--soft)}
 </style>
 </head>
 <body>
@@ -347,15 +356,22 @@ footer button.lnk:hover{color:var(--gold-2)}
   <div class="wrap">
     <div class="head reveal">
       <h2 class="script">Our Story</h2>
-      <p>Across the miles, back to each other</p>
+      <p>As told by his college friends</p>
       <svg class="mh" viewBox="0 0 240 40" aria-hidden="true" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><g><path pathLength="1" d="M6 24C26 24 36 10 58 15C74 19 76 33 64 33C55 33 54 25 61 24"/><path pathLength="1" d="M30 20C32 11 40 8 46 10"/><path pathLength="1" d="M84 24C92 24 98 18 106 19"/><path pathLength="1" d="M36 22C40 29 48 30 52 27"/></g><g transform="translate(240 0) scale(-1 1)"><path pathLength="1" d="M6 24C26 24 36 10 58 15C74 19 76 33 64 33C55 33 54 25 61 24"/><path pathLength="1" d="M30 20C32 11 40 8 46 10"/><path pathLength="1" d="M84 24C92 24 98 18 106 19"/><path pathLength="1" d="M36 22C40 29 48 30 52 27"/></g>
 <path pathLength="1" d="M120 5C133 12 135 29 120 36C105 29 107 12 120 5Z"/><path pathLength="1" d="M120 14C126 18 126 26 120 30C114 26 114 18 120 14Z"/><circle cx="120" cy="22" r="1.8"/></svg>
     </div>
-    <svg class="flight" viewBox="0 0 300 70" aria-hidden="true"><path id="fp" d="M20 55 Q150 -25 280 55" fill="none" stroke="#d4a24c" stroke-width="1.5" stroke-dasharray="3 6"/><circle cx="20" cy="55" r="4" fill="#d4a24c"/><circle cx="280" cy="55" r="4" fill="#d4a24c"/><text x="20" y="69" font-size="9" fill="#8c6a55" text-anchor="middle" font-family="Jost">India</text><text x="280" y="69" font-size="9" fill="#8c6a55" text-anchor="middle" font-family="Jost">Australia</text><g class="plane"><text font-size="16" text-anchor="middle" dominant-baseline="central" transform="rotate(0)">&#9992;&#65039;</text><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#fp"/></animateMotion></g></svg>
     <div class="tl">
-      <div class="st reveal"><div class="yr">&#10022;</div><h3>A year apart</h3><p>India and Australia, one year and a few time zones between them. Long-distance, but never far.</p></div>
-      <div class="st reveal"><div class="yr">&#10022;</div><h3>Together again</h3><p>The distance ended and the two were side by side once more.</p></div>
-      <div class="st reveal"><div class="yr">&#10022;</div><h3>Saath Phere</h3><p>On 2 December 2026, they begin forever. We can't wait to celebrate with you.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">💘</div><h3>Before 2015 · Already taken</h3><p>The story started a few years before any of us showed up. Childhood sweethearts. We are merely the supporting cast.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">🎓</div><h3>2015 · Enter the college gang</h3><p>We met PC. His opening line, within minutes: "I have a girlfriend." Nobody had asked.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">📸</div><h3>Operation Set-Up PC</h3><p>Every matchmaking attempt by the gang failed. Reason: he kept showing us Neha's photo. Case closed.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">📞</div><h3>11 pm, every night</h3><p>Sorry, can't talk, I'm on a call. Our hostel-night plans came with a permanent 11 pm exception.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">📝</div><h3>The exam-date department</h3><p>Neha knew our exam dates better than we did. Honestly, we should have hired her as the class reminder.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">✈️</div><h3>The Australia chapter</h3><p>One year apart, about five hours of time difference, good-morning and good-night texts crossing the Indian Ocean. PC became an expert in AEST and in the cost of international calls.</p><svg class="flight" viewBox="0 0 300 70" aria-hidden="true"><path id="fp" d="M20 55 Q150 -25 280 55" fill="none" stroke="#d4a24c" stroke-width="1.5" stroke-dasharray="3 6"/><circle cx="20" cy="55" r="4" fill="#d4a24c"/><circle cx="280" cy="55" r="4" fill="#d4a24c"/><text x="20" y="69" font-size="9" fill="#8c6a55" text-anchor="middle" font-family="Jost">India</text><text x="280" y="69" font-size="9" fill="#8c6a55" text-anchor="middle" font-family="Jost">Australia</text><g class="plane"><text font-size="16" text-anchor="middle" dominant-baseline="central" transform="rotate(0)">&#9992;&#65039;</text><animateMotion dur="7s" repeatCount="indefinite" rotate="auto"><mpath href="#fp"/></animateMotion></g></svg></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">🏡</div><h3>Back together</h3><p>The distance ended. The calling plan was cancelled. The gang cheered, loudly.</p></div>
+      <div class="st reveal"><div class="emo" aria-hidden="true">🔥</div><h3>02 · 12 · 2026 · Saath Phere</h3><p>The final milestone, and the one we have all been waiting for. Come celebrate with us.</p></div>
+    </div>
+    <div class="facts reveal"><p class="fl">Fun stats, estimated by the college gang</p>
+      <div class="fg"><div><b>10+</b><span>years together</span></div><div><b>&infin;</b><span>good-night texts</span></div><div><b>2</b><span>time zones survived</span></div><div><b>All of us</b><span>said &ldquo;finally!&rdquo;</span></div></div>
     </div>
   </div>
 </section>
