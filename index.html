@@ -132,7 +132,7 @@ footer .script{font-size:2rem;color:var(--gold-2);display:block;margin-bottom:6p
 body:not(.opened){overflow:hidden}
 body:not(.opened) .hero *{animation-play-state:paused!important}
 .env-wrap{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
-  background:radial-gradient(ellipse at center,#7a1628 0%,#3d0812 70%,#22040a 100%);transition:opacity 1s ease .9s,visibility 0s 1.9s;cursor:pointer}
+  background:radial-gradient(ellipse at center,#7a1628 0%,#3d0812 70%,#22040a 100%);transition:opacity .7s ease .2s,visibility 0s .9s;cursor:pointer}
 .env-wrap.gone{opacity:0;visibility:hidden}
 .env-wrap .to{font-family:"Cormorant Garamond",serif;font-style:italic;color:#f3d48c;font-size:clamp(1.2rem,4.5vw,1.6rem);text-align:center;padding:0 20px}
 .envelope{position:relative;width:min(340px,82vw);aspect-ratio:3/2;perspective:900px;filter:drop-shadow(0 30px 50px rgba(0,0,0,.5));animation:float 3s ease-in-out infinite}
@@ -210,11 +210,37 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
 #music:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
 body:not(.opened) #music{display:none}
 @media (prefers-reduced-motion:reduce){.invite .card{transform:none!important}#prog{display:none}}
+
+/* ---------- ROUND 3A: gate + toran ---------- */
+.gate{position:fixed;inset:0;z-index:99;display:flex;pointer-events:none;perspective:1400px;overflow:hidden;background:#2c060d}
+.gate .pn{flex:1;position:relative;background:radial-gradient(ellipse at 50% 40%,#7a1628,#4a0c18 80%);transition:transform 1.6s cubic-bezier(.7,0,.2,1) .8s;box-shadow:inset 0 0 60px rgba(0,0,0,.5)}
+.gate .pn svg{position:absolute;inset:0;width:100%;height:100%}
+.gate .r svg{transform:scaleX(-1)}
+.gate .l{transform-origin:left center}.gate .r{transform-origin:right center}
+body.opened .gate{background:transparent}
+body.opened .gate .l{transform:rotateY(-108deg)}
+body.opened .gate .r{transform:rotateY(108deg)}
+body.opened .gate{visibility:hidden;transition:visibility 0s 2.6s}
+.toran{position:absolute;top:0;left:0;right:0;height:130px;z-index:3;pointer-events:none}
+.toran svg{width:100%;height:100%;overflow:visible}
+.toran .sw{transform-box:fill-box;transform-origin:50% 0;animation:sway 4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@media (prefers-reduced-motion:reduce){.gate{display:none}}
 </style>
 </head>
 <body>
 <div id="prog" aria-hidden="true"></div>
 <button id="music" aria-pressed="false" aria-label="Play ambient music" title="Ambient music">&#9834;</button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<pattern id="lat" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M5 1l4 4-4 4-4-4z" fill="none" stroke="#d4a24c" stroke-opacity=".35" stroke-width=".6"/></pattern>
+<symbol id="jh" viewBox="0 0 100 200" preserveAspectRatio="xMidYMid slice">
+<rect x="2" y="2" width="96" height="196" fill="none" stroke="#d4a24c" stroke-width="1.4"/><rect x="7" y="7" width="86" height="186" fill="none" stroke="#d4a24c" stroke-opacity=".5" stroke-width=".6"/>
+<path d="M14 192V92Q14 44 50 24Q86 44 86 92V192Z" fill="url(#lat)" stroke="#f3d48c" stroke-width="1.2"/>
+<path d="M24 192V94Q24 56 50 40Q76 56 76 94V192" fill="none" stroke="#d4a24c" stroke-width=".8"/>
+<path d="M50 24V14M44 18Q50 8 56 18" fill="none" stroke="#f3d48c" stroke-width="1"/><circle cx="50" cy="12" r="2.5" fill="#f3d48c"/>
+<circle cx="50" cy="104" r="12" fill="none" stroke="#f3d48c" stroke-width=".8"/><circle cx="50" cy="104" r="5" fill="#d4a24c" fill-opacity=".6"/>
+<circle cx="95" cy="110" r="3.5" fill="#f3d48c"/></symbol></defs></svg>
+<div class="gate" aria-hidden="true"><div class="pn l"><svg><use href="#jh"/></svg></div><div class="pn r"><svg><use href="#jh"/></svg></div></div>
 <div class="env-wrap" id="env" role="button" aria-label="Open the invitation" tabindex="0">
   <p class="to" id="envTo">You have received an invitation</p>
   <div class="envelope">
@@ -240,6 +266,7 @@ body:not(.opened) #music{display:none}
     </g>
   </svg>
   <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="toran" id="toran" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="ganesha">ॐ</div>
     <p class="guest" id="guest"></p>
@@ -531,6 +558,25 @@ function startMusic(){
 }
 function stopMusic(){ clearInterval(timer); if (master){ master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(0, ac.currentTime + .6); const m = master; setTimeout(() => m.disconnect(), 800); } }
 mb.addEventListener("click", () => { on = !on; mb.setAttribute("aria-pressed", on); mb.setAttribute("aria-label", on ? "Pause ambient music" : "Play ambient music"); mb.textContent = on ? "\u266B" : "\u266A"; on ? startMusic() : stopMusic(); });
+
+// ---------- ROUND 3A ----------
+// marigold toran
+(function(){
+  const t = document.getElementById("toran"), W = Math.max(320, t.clientWidth || innerWidth), n = Math.round(W / 46), NS = "http://www.w3.org/2000/svg";
+  let h = '<svg viewBox="0 0 ' + W + ' 130" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4Q' + W/2 + ' 34 ' + W + ' 4" fill="none" stroke="#8a5a1a" stroke-width="2"/>';
+  for (let i = 0; i < n; i++){
+    const x = (i + .5) * W / n, y = 4 + 30 * (1 - Math.pow(2 * x / W - 1, 2)) * .5 + 0, len = 22 + (i % 3) * 14, d = (i * .37).toFixed(2);
+    h += '<g class="sw" style="animation-delay:-' + d + 's;animation-duration:' + (3.4 + (i % 4) * .4) + 's">'
+      + '<line x1="' + x + '" y1="' + y + '" x2="' + x + '" y2="' + (y + len + 14) + '" stroke="#8a5a1a" stroke-width="1"/>'
+      + '<ellipse cx="' + (x - 7) + '" cy="' + (y + 12) + '" rx="3.4" ry="9" fill="#2f7d3a" transform="rotate(28 ' + (x - 7) + ' ' + (y + 12) + ')"/>'
+      + '<ellipse cx="' + (x + 7) + '" cy="' + (y + 12) + '" rx="3.4" ry="9" fill="#3c9148" transform="rotate(-28 ' + (x + 7) + ' ' + (y + 12) + ')"/>';
+    const cy = y + len + 14, c1 = i % 2 ? "#ff9f1c" : "#ffb703";
+    h += '<circle cx="' + x + '" cy="' + cy + '" r="8.5" fill="' + c1 + '"/><circle cx="' + x + '" cy="' + cy + '" r="5.5" fill="#f77f00"/><circle cx="' + x + '" cy="' + cy + '" r="2.4" fill="#ffd166"/></g>';
+  }
+  t.innerHTML = h + '</svg>';
+})();
+// haptic touch on envelope open
+env.addEventListener("click", () => { try { navigator.vibrate && navigator.vibrate(30); } catch (e) {} });
 </script>
 </body>
 </html>
