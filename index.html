@@ -164,7 +164,8 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
 .guest{font-family:"Cormorant Garamond",serif;font-style:italic;color:#f3d48c;font-size:clamp(1.1rem,4vw,1.4rem);margin-bottom:10px;min-height:1px;opacity:0;animation:rise 1s .3s forwards}
 .hero h1{background-size:200% auto;animation:rise 1.2s .8s forwards,shimmer 5s 2.2s linear infinite}
 @keyframes shimmer{to{background-position:200% center}}
-#fx{position:fixed;inset:0;pointer-events:none;z-index:120}
+#fx{position:fixed;top:0;left:0;width:100vw;width:100dvw;height:100vh;height:100dvh;pointer-events:none;z-index:120}
+html{overflow-x:hidden}html,body{overflow-x:clip;max-width:100%}
 .spark{position:fixed;pointer-events:none;z-index:110;color:#f3d48c;font-size:14px;animation:spark .9s ease-out forwards}
 @keyframes spark{to{transform:translate(var(--x),var(--y)) scale(.2) rotate(180deg);opacity:0}}
 .story{background:#fffdf7}
@@ -536,7 +537,7 @@ if (guest) {
 // confetti on a canvas
 const fx = document.getElementById("fx"), ctx = fx.getContext("2d");
 let parts = [], raf = 0;
-function size() { fx.width = innerWidth * devicePixelRatio; fx.height = innerHeight * devicePixelRatio; ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); }
+function size() { fx.width = document.documentElement.clientWidth * devicePixelRatio; fx.height = innerHeight * devicePixelRatio; ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); }
 size(); addEventListener("resize", size);
 function burst(x, y, n = 160) {
   const C = ["#f3d48c", "#d4a24c", "#ffffff", "#e8577a", "#c2185b", "#ffb703"];
