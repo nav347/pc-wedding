@@ -242,6 +242,39 @@ body.opened .gate{visibility:hidden;transition:visibility 0s 2.6s}
 @keyframes flipd{0%{transform:rotateX(-90deg);opacity:.2}100%{transform:none;opacity:1}}
 .count{opacity:0}
 @media (prefers-reduced-motion:reduce){.count b.flip{animation:none}.mh path{stroke-dashoffset:0!important;transition:none}.mh circle{opacity:1!important}}
+
+/* ---------- ROUND 3C: diya, invite maker, lanterns ---------- */
+.diya-box{margin:30px auto 0;text-align:center}
+.diya{background:none;border:0;cursor:pointer;position:relative;width:120px;height:86px;color:inherit;font:inherit}
+.diya:focus-visible{outline:3px solid var(--gold);outline-offset:6px;border-radius:12px}
+.diya svg{width:100%;height:100%;overflow:visible}
+.diya .flame{opacity:0;transform-origin:60px 50px;transform:scale(.3);transition:opacity .6s,transform .6s}
+.diya .glow{opacity:0;transition:opacity 1s}
+.diya[aria-pressed=true] .flame{opacity:1;transform:none;animation:flick 1.3s ease-in-out infinite alternate}
+.diya[aria-pressed=true] .glow{opacity:1;animation:glowp 2s ease-in-out infinite alternate}
+@keyframes flick{0%{transform:scale(1,1) rotate(-2deg)}50%{transform:scale(.94,1.08) rotate(2deg)}100%{transform:scale(1.04,.95) rotate(-1deg)}}
+@keyframes glowp{from{opacity:.75}to{opacity:1}}
+.diya-msg{color:var(--soft);margin-top:6px;min-height:1.5em;font-size:.95rem}
+.rsvp{overflow:hidden}.rsvp .wrap{position:relative;z-index:1}
+.lantern{position:absolute;bottom:-60px;z-index:0;width:22px;height:30px;border-radius:7px 7px 9px 9px;pointer-events:none;
+  background:linear-gradient(180deg,#ffd27a,#ff9a3c);box-shadow:0 0 22px 8px rgba(255,170,70,.45);opacity:0;animation:lift linear forwards}
+.lantern::after{content:"";position:absolute;left:30%;right:30%;bottom:-3px;height:5px;background:#7a3a10;border-radius:2px}
+@keyframes lift{0%{opacity:0;transform:translate(0,0)}10%{opacity:.85}90%{opacity:.6}100%{opacity:0;transform:translate(var(--lx),-115vh) rotate(var(--lr))}}
+footer button.lnk{background:none;border:0;color:rgba(255,248,236,.5);font:inherit;font-size:.8rem;text-decoration:underline;cursor:pointer;margin-top:14px}
+footer button.lnk:hover{color:var(--gold-2)}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(20,3,8,.7);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px)}
+.modal.show{display:flex}
+.modal .pnl{background:#fffdf7;border-radius:18px;max-width:440px;width:100%;padding:28px 24px;border:1px solid var(--gold);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.modal h3{font-family:"Cormorant Garamond",serif;font-size:1.7rem;color:var(--maroon)}
+.modal label{display:block;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--soft);margin:16px 0 6px}
+.modal input{width:100%;padding:12px 14px;border:1px solid rgba(212,162,76,.7);border-radius:10px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+.modal input:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+.modal .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.modal .btn{padding:11px 18px;font-size:.88rem}
+.modal .btn.ghost{color:var(--maroon);border-color:var(--gold)}
+.modal .x{float:right;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--soft)}
+.modal .ok{min-height:1.4em;margin-top:10px;font-size:.85rem;color:#2e8b57}
+@media (prefers-reduced-motion:reduce){.diya[aria-pressed=true] .flame,.diya[aria-pressed=true] .glow{animation:none}}
 </style>
 </head>
 <body>
@@ -388,6 +421,17 @@ body.opened .gate{visibility:hidden;transition:visibility 0s 2.6s}
       <button class="wish">Happy together, always</button><button class="wish">Blessings to you both</button><button class="wish">Can't wait to celebrate!</button>
     </div>
     <p class="wcount" id="wcount" aria-live="polite"></p>
+    <div class="diya-box reveal">
+      <button class="diya" id="diya" aria-pressed="false" aria-label="Light a diya for PC and Neha">
+        <svg viewBox="0 16 120 86" aria-hidden="true"><defs><radialGradient id="gl"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ff9a3c" stop-opacity="0"/></radialGradient>
+        <linearGradient id="cl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9742f"/><stop offset="1" stop-color="#8a4a1c"/></linearGradient></defs>
+        <circle class="glow" cx="60" cy="48" r="52" fill="url(#gl)"/>
+        <path d="M14 66Q60 50 106 66Q96 96 60 98Q24 96 14 66Z" fill="url(#cl)" stroke="#d4a24c" stroke-width="1.5"/>
+        <path d="M22 70Q60 58 98 70" fill="none" stroke="#f3d48c" stroke-width="1" stroke-dasharray="2 4"/>
+        <path class="flame" d="M60 24C70 38 72 48 60 56C48 48 50 38 60 24Z" fill="#ffb02e"/><path class="flame" d="M60 38C65 44 65 50 60 54C55 50 55 44 60 38Z" fill="#fff3b0"/></svg>
+      </button>
+      <p class="diya-msg" id="diyaMsg" aria-live="polite">Tap to light a diya</p>
+    </div>
   </div>
 </section>
 
@@ -404,9 +448,17 @@ body.opened .gate{visibility:hidden;transition:visibility 0s 2.6s}
 
 <footer>
   <span class="script">PC &amp; Neha</span>
-  02 · 12 · 2026 · Made with love
+  02 · 12 · 2026 · Made with love<br><button class="lnk" id="invOpen" type="button">Send invites</button>
 </footer>
 
+<div class="modal" id="inv" role="dialog" aria-modal="true" aria-labelledby="invT"><div class="pnl">
+  <button class="x" id="invX" aria-label="Close">&times;</button>
+  <h3 id="invT">Send a personal invite</h3>
+  <label for="invName">Guest name</label><input id="invName" autocomplete="off" maxlength="40" placeholder="e.g. Rahul">
+  <label for="invLink">Their link</label><input id="invLink" readonly>
+  <div class="row"><button class="btn gold" id="invCopy" type="button">Copy link</button><a class="btn ghost" id="invWa" target="_blank" rel="noopener">WhatsApp</a><button class="btn ghost" id="invSh" type="button" hidden>Share…</button></div>
+  <p class="ok" id="invOk" aria-live="polite"></p>
+</div></div>
 <script>
 // countdown
 const T = new Date("2026-12-02T00:00:00+05:30").getTime(), cEl = document.getElementById("count");
@@ -599,6 +651,43 @@ mb.addEventListener("click", () => { on = !on; mb.setAttribute("aria-pressed", o
 })();
 // haptic touch on envelope open
 env.addEventListener("click", () => { try { navigator.vibrate && navigator.vibrate(30); } catch (e) {} });
+
+// ---------- ROUND 3C ----------
+// diya (remembered per device)
+const dy = document.getElementById("diya"), dm = document.getElementById("diyaMsg");
+function lit(show){ dy.setAttribute("aria-pressed","true"); dm.textContent = "You lit a diya for PC & Neha \u{1FA94}"; if (show && !RM){ burst(dy.getBoundingClientRect().left+60, dy.getBoundingClientRect().top+40, 40); try{ navigator.vibrate && navigator.vibrate(30);}catch(e){} } }
+try { if (localStorage.getItem("pcn-diya") === "1") lit(false); } catch (e) {}
+dy.addEventListener("click", () => { lit(true); try { localStorage.setItem("pcn-diya","1"); } catch (e) {} });
+
+// invite maker
+const inv = document.getElementById("inv"), iN = document.getElementById("invName"), iL = document.getElementById("invLink"), iW = document.getElementById("invWa"), iS = document.getElementById("invSh"), iO = document.getElementById("invOk");
+const base = location.origin + location.pathname;
+function clean(v){ return v.replace(/<[^>]*>/g,"").replace(/s+/g," ").replace(/[<>&"]/g,"").trim().slice(0,40); }
+function upd(){ const n = clean(iN.value), link = base + (n ? "?to=" + encodeURIComponent(n) : "");
+  iL.value = link; const msg = (n ? "Dear " + n + ", y" : "Y") + "ou are warmly invited to the wedding of PC & Neha on 2 December 2026. Open your invitation: " + link;
+  iW.href = "https://wa.me/?text=" + encodeURIComponent(msg); iL.dataset.msg = msg; }
+iN.addEventListener("input", upd); upd();
+let lastF = null;
+function openInv(){ lastF = document.activeElement; inv.classList.add("show"); document.body.style.overflow = "hidden"; iN.focus(); }
+function closeInv(){ inv.classList.remove("show"); document.body.style.overflow = ""; lastF && lastF.focus(); }
+document.getElementById("invOpen").addEventListener("click", openInv);
+document.getElementById("invX").addEventListener("click", closeInv);
+inv.addEventListener("click", e => { if (e.target === inv) closeInv(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && inv.classList.contains("show")) closeInv(); });
+document.getElementById("invCopy").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(iL.value); iO.textContent = "Link copied"; }
+  catch (e) { try { iL.select(); document.execCommand("copy"); iO.textContent = "Link copied"; } catch (e2) { iO.textContent = "Press and hold the link to copy"; } } });
+if (navigator.share){ iS.hidden = false; iS.addEventListener("click", () => navigator.share({ title: "PC & Neha's wedding", text: iL.dataset.msg, url: iL.value }).catch(() => {})); }
+
+// sky lanterns behind RSVP
+(function(){
+  if (RM) return; const sec = document.querySelector(".rsvp"); let vis = false;
+  new IntersectionObserver(e => vis = e[0].isIntersecting).observe(sec);
+  setInterval(() => { if (!vis || document.hidden || sec.querySelectorAll(".lantern").length > 9) return;
+    const l = document.createElement("span"), d = 14 + Math.random()*10; l.className = "lantern";
+    l.style.cssText = "left:" + Math.random()*94 + "%;animation-duration:" + d + "s;--lx:" + (Math.random()-.5)*120 + "px;--lr:" + (Math.random()-.5)*20 + "deg;transform:scale(" + (.7+Math.random()*.7) + ")";
+    sec.appendChild(l); setTimeout(() => l.remove(), d*1000); }, 1600);
+})();
 </script>
 </body>
 </html>
