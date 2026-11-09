@@ -51,6 +51,7 @@ body{font-family:Jost,system-ui,sans-serif;color:var(--ink);background:var(--cre
 .btn.gold:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,162,76,.5)}
 .btn.ghost{color:var(--gold-2);border:1px solid rgba(243,212,140,.5);background:transparent}
 .btn.ghost:hover{background:rgba(243,212,140,.1)}
+.btn:focus-visible,#env:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
 .scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);color:var(--gold-2);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;z-index:2;animation:bob 2s infinite}
 @keyframes bob{50%{transform:translate(-50%,6px)}}
 
@@ -86,6 +87,8 @@ section{padding:90px 20px;position:relative}
 .ev .when{margin-top:8px;font-weight:500;color:var(--ink)}
 .ev .where{margin-top:4px;color:var(--soft);font-size:.92rem}
 .ev .tba{display:inline-block;margin-top:12px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);padding:4px 10px;border-radius:999px}
+.ev.wide{grid-column:1/-1;max-width:420px;width:100%;justify-self:center}
+.st .yr{display:none}
 .ev.main{grid-column:1/-1;background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:var(--cream);border-top:0}
 .ev.main h3{color:var(--gold-2);font-size:2.2rem}
 .ev.main .when{color:var(--cream);font-size:1.1rem}
@@ -162,9 +165,46 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
 .st p{color:#8c6a55;font-size:.95rem;line-height:1.6}
 @media (max-width:640px){.tl::before{left:12px}.st,.st:nth-child(odd),.st:nth-child(even){left:0;width:100%;text-align:left;padding:0 0 34px 42px}
   .st:nth-child(odd)::before,.st:nth-child(even)::before{left:4px;right:auto}}
+
+/* ---------- PREMIUM LAYER ---------- */
+#dust{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#a8772a,#f3d48c,#d4a24c);z-index:130;pointer-events:none;box-shadow:0 0 10px rgba(243,212,140,.7)}
+.mandala{will-change:transform}
+.invite{perspective:1100px}
+.invite .card{transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,opacity 1s,box-shadow .3s;overflow:hidden;
+  background:linear-gradient(135deg,#fffdf7,#fbf1da 50%,#fffdf7)}
+.invite .card>*{position:relative;z-index:1}
+.invite .card .sheen{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:6px;mix-blend-mode:soft-light;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.95),rgba(243,212,140,.55) 25%,transparent 55%)}
+.invite .card::before{border:2px solid transparent;background:linear-gradient(135deg,#a8772a,#f3d48c,#d4a24c,#fff2c4,#a8772a) border-box;
+  -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;background-size:200% 200%;background-position:var(--mx,50%) var(--my,50%)}
+.ev.reveal:nth-child(odd):not(.in){transform:translateX(-40px)}
+.ev.reveal:nth-child(even):not(.in){transform:translateX(40px)}
+.dress{background:linear-gradient(180deg,var(--cream),#fff3df);text-align:center}
+.dress .note{max-width:520px;margin:0 auto 26px;color:var(--soft);line-height:1.7}
+.palette{display:flex;flex-wrap:wrap;gap:16px 12px;justify-content:center}
+.chip{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.chip i{width:56px;height:56px;border-radius:50%;background:var(--c);border:3px solid #fff;box-shadow:0 8px 20px rgba(90,15,28,.18),0 0 0 1px rgba(212,162,76,.5);transition:transform .3s}
+.chip:hover i{transform:scale(1.1) rotate(8deg)}
+.dress h3{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--maroon);margin-bottom:16px}
+.bless{background:#fffdf7;text-align:center;overflow:hidden}
+.wishes{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:640px;margin:0 auto}
+.wish{font:inherit;font-size:.95rem;padding:12px 20px;border-radius:999px;border:1px solid var(--gold);background:#fff;color:var(--maroon);cursor:pointer;transition:.25s}
+.wish:hover{background:linear-gradient(135deg,var(--gold-2),var(--gold));transform:translateY(-2px)}
+.wish:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wcount{margin-top:22px;color:var(--soft);font-size:.9rem;min-height:1.4em}
+.heart{position:fixed;pointer-events:none;z-index:125;font-size:24px;animation:floatup 2s ease-out forwards}
+@keyframes floatup{to{transform:translate(var(--hx),-220px) scale(1.5);opacity:0}}
+#music{position:fixed;right:16px;bottom:16px;z-index:90;width:48px;height:48px;border-radius:50%;border:1px solid rgba(243,212,140,.7);background:rgba(90,15,28,.88);color:var(--gold-2);font-size:1.2rem;cursor:pointer;display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3);backdrop-filter:blur(4px)}
+#music[aria-pressed=true]{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--maroon);animation:pulse 2s infinite}
+#music:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
+body:not(.opened) #music{display:none}
+@media (prefers-reduced-motion:reduce){.invite .card{transform:none!important}#prog{display:none}}
 </style>
 </head>
 <body>
+<div id="prog" aria-hidden="true"></div>
+<button id="music" aria-pressed="false" aria-label="Play ambient music" title="Ambient music">&#9834;</button>
 <div class="env-wrap" id="env" role="button" aria-label="Open the invitation" tabindex="0">
   <p class="to" id="envTo">You have received an invitation</p>
   <div class="envelope">
@@ -176,7 +216,7 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
   </div>
   <p class="hint">Tap to open</p>
 </div>
-<canvas id="fx"></canvas>
+<canvas id="fx" aria-hidden="true"></canvas>
 
 <header class="hero" id="top">
   <svg class="mandala" viewBox="0 0 200 200" aria-hidden="true">
@@ -189,6 +229,7 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
       <use href="#p" transform="rotate(300 100 100)"/><use href="#p" transform="rotate(330 100 100)"/>
     </g>
   </svg>
+  <canvas id="dust" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="ganesha">ॐ</div>
     <p class="guest" id="guest"></p>
@@ -197,20 +238,21 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
     <p class="tag serif">are getting married</p>
     <div class="divider"><span></span>✦<span></span></div>
     <p class="date serif">02 · 12 · 2026<small>Wednesday</small></p>
-    <div class="count" id="count" aria-live="polite"></div>
+    <div class="count" id="count" role="timer" aria-label="Countdown to the wedding"></div>
     <div class="btns">
       <a class="btn gold" id="gcal" target="_blank" rel="noopener">📅 Add to calendar</a>
       <a class="btn ghost" href="#events">View events ↓</a>
     </div>
   </div>
-  <div class="scroll">scroll</div>
+  <div class="scroll" aria-hidden="true">scroll</div>
 </header>
 
 <section class="invite">
   <div class="card reveal">
-    <p class="lead serif">With the blessings of our elders,<br>we joyfully invite you to celebrate the wedding of</p>
+    <span class="sheen" aria-hidden="true"></span>
+    <p class="lead serif">With joy in our hearts,<br>we invite you to celebrate the wedding of</p>
     <p class="names script">PC <span class="amp">&amp;</span> Neha</p>
-    <p class="fam">Your presence will make our day complete.<br>With love from both our families</p>
+    <p class="fam">Your presence will make the day complete.<br>Full invitation details to follow</p>
   </div>
 </section>
 
@@ -218,14 +260,14 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
   <div class="wrap">
     <div class="head reveal">
       <h2 class="script">Our Story</h2>
-      <p>How it all began</p>
+      <p>A story still being written</p>
       <svg class="orn" viewBox="0 0 120 12"><path d="M0 6h48M72 6h48" stroke="currentColor"/><path d="M60 0l6 6-6 6-6-6z" fill="currentColor"/></svg>
     </div>
     <div class="tl">
-      <div class="st reveal"><div class="yr">2019</div><h3>First Hello</h3><p>A friend's birthday party in Bengaluru. One shared plate of pani puri, and a conversation that never really ended.</p></div>
-      <div class="st reveal"><div class="yr">2021</div><h3>First Trip</h3><p>A rainy weekend in Coorg, endless filter coffee, and the moment they both knew.</p></div>
-      <div class="st reveal"><div class="yr">2025</div><h3>The Proposal</h3><p>Under the stars on a Goa beach, a ring, a nervous PC, and the happiest "yes".</p></div>
-      <div class="st reveal"><div class="yr">2026</div><h3>Forever Begins</h3><p>On 2 December, two families become one. We can't wait to celebrate with you.</p></div>
+      <div class="st reveal"><div class="yr">&#10022;</div><h3>How we met</h3><p>Every love story begins with a hello. Theirs has a chapter all its own.</p></div>
+      <div class="st reveal"><div class="yr">&#10022;</div><h3>Our journey</h3><p>Laughter, little adventures and a bond that grows stronger with each day.</p></div>
+      <div class="st reveal"><div class="yr">&#10022;</div><h3>The proposal</h3><p>One beautiful question, and a heart that already knew the answer.</p></div>
+      <div class="st reveal"><div class="yr">&#10022;</div><h3>Forever begins</h3><p>On 2 December 2026, a new chapter begins. We can't wait to celebrate with you.</p></div>
     </div>
   </div>
 </section>
@@ -234,15 +276,12 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
   <div class="wrap">
     <div class="head reveal">
       <h2 class="script">The Celebrations</h2>
-      <p>Join us for every moment</p>
+      <p>Save the date</p>
       <svg class="orn" viewBox="0 0 120 12"><path d="M0 6h48M72 6h48" stroke="currentColor"/><path d="M60 0l6 6-6 6-6-6z" fill="currentColor"/></svg>
     </div>
     <div class="timeline">
-      <div class="ev reveal" style="--c:#e0a100"><div class="ico">🌼</div><h3>Haldi</h3><p class="when">Sunday, 29 Nov · 10:00 AM</p><p class="where">Family home, Indiranagar</p><span class="tba">Wear yellow</span></div>
-      <div class="ev reveal" style="--c:#2e8b57"><div class="ico">🌿</div><h3>Mehendi</h3><p class="when">Monday, 30 Nov · 4:00 PM</p><p class="where">The Courtyard, Koramangala</p><span class="tba">Wear green</span></div>
-      <div class="ev reveal" style="--c:#c2185b"><div class="ico">🎶</div><h3>Sangeet</h3><p class="when">Tuesday, 1 Dec · 7:00 PM</p><p class="where">The Royal Orchid Gardens, Bengaluru</p><span class="tba">Dance ready</span></div>
-      <div class="ev main reveal"><div class="ico">💍</div><h3>The Wedding</h3><p class="when">Wednesday, 2 December 2026 · Muhurtham 11:24 AM</p><p class="where">The Royal Orchid Gardens, Bengaluru</p></div>
-      <div class="ev reveal" style="--c:#6a3fb5"><div class="ico">🥂</div><h3>Reception</h3><p class="when">Wednesday, 2 Dec · 7:30 PM</p><p class="where">The Royal Orchid Gardens, Bengaluru</p><span class="tba">Dinner &amp; music</span></div>
+      <div class="ev main reveal"><div class="ico">💍</div><h3>The Wedding</h3><p class="when">Wednesday, 2 December 2026</p><p class="where">Time &amp; venue to be announced</p></div>
+      <div class="ev wide reveal" style="--c:#c2185b"><div class="ico">✨</div><h3>More celebrations</h3><p class="when">Details coming soon</p><p class="where">Any pre-wedding functions will be shared here</p><span class="tba">Stay tuned</span></div>
     </div>
   </div>
 </section>
@@ -251,16 +290,44 @@ body:not(.opened) .hero *{animation-play-state:paused!important}
   <div class="wrap">
     <div class="head reveal">
       <h2 class="script">The Venue</h2>
-      <p>Where the magic happens</p>
+      <p>Details coming soon</p>
     </div>
     <div class="box reveal">
-      <div class="map"><div><div class="pin">📍</div><div class="serif" style="font-size:1.3rem;margin-top:6px">Bengaluru, Karnataka</div></div></div>
+      <div class="map"><div><div class="pin">📍</div><div class="serif" style="font-size:1.3rem;margin-top:6px">Venue to be announced</div></div></div>
       <div class="info">
-        <h3>The Royal Orchid Gardens</h3>
-        <p>Old Airport Road, Bengaluru · Parking available on site</p>
-        <a class="btn gold" href="https://www.google.com/maps/search/?api=1&query=Royal+Orchid+Bengaluru" target="_blank" rel="noopener">🗺️ Open in Google Maps</a>
+        <h3>Venue · to be announced</h3>
+        <p>We will share the venue and directions here very soon.</p>
+        <span class="btn ghost" style="color:var(--soft);border-color:rgba(140,106,85,.4);cursor:default" aria-disabled="true">🗺️ Map link coming soon</span>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="dress">
+  <div class="wrap">
+    <div class="head reveal"><h2 class="script">Dress Palette</h2><p>Colours to inspire you</p></div>
+    <p class="note reveal">A suggested palette to draw from. Final dress guidance for each celebration will be shared with the event details.</p>
+    <div class="reveal">
+      <h3>The Wedding</h3>
+      <div class="palette">
+        <div class="chip" style="--c:#fff8ec"><i></i>Ivory</div>
+        <div class="chip" style="--c:#d4a24c"><i></i>Gold</div>
+        <div class="chip" style="--c:#7a1628"><i></i>Maroon</div>
+        <div class="chip" style="--c:#f2b5c0"><i></i>Blush</div>
+        <div class="chip" style="--c:#2e8b57"><i></i>Emerald</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bless">
+  <div class="wrap">
+    <div class="head reveal"><h2 class="script">Send Your Blessings</h2><p>Tap a wish for the couple</p></div>
+    <div class="wishes reveal" id="wishes">
+      <button class="wish">Congratulations!</button><button class="wish">Best wishes!</button><button class="wish">Shubh Vivah</button>
+      <button class="wish">Happy together, always</button><button class="wish">Blessings to you both</button><button class="wish">Can't wait to celebrate!</button>
+    </div>
+    <p class="wcount" id="wcount" aria-live="polite"></p>
   </div>
 </section>
 
@@ -308,7 +375,7 @@ const hero = document.querySelector(".hero"), P = ["🌸","🌺","✿","❀","�
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
   setInterval(() => {
     if (document.hidden || hero.getBoundingClientRect().bottom < 0) return;
-    const p = document.createElement("span"); p.className = "petal"; p.textContent = P[Math.random()*P.length|0];
+    const p = document.createElement("span"); p.className = "petal"; p.setAttribute("aria-hidden","true"); p.textContent = P[Math.random()*P.length|0];
     const d = 6 + Math.random()*6;
     p.style.cssText = `left:${Math.random()*100}%;font-size:${12+Math.random()*16}px;opacity:${.5+Math.random()*.5};animation-duration:${d}s;--dx:${(Math.random()-.5)*200}px;--r:${Math.random()*720}deg;color:#f3d48c`;
     hero.appendChild(p); setTimeout(() => p.remove(), d*1000);
@@ -317,7 +384,7 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches){
 
 // ---------- WOW LAYER ----------
 // personal greeting: share links like ?to=Rahul
-const guest = (new URLSearchParams(location.search).get("to") || "").replace(/[<>&"]/g, "").slice(0, 40).trim();
+const guest = (new URLSearchParams(location.search).get("to") || "").replace(/<[^>]*>/g, "").replace(/[<>&"]/g, "").slice(0, 40).trim();
 if (guest) {
   document.getElementById("guest").textContent = "Dear " + guest + ",";
   document.getElementById("envTo").textContent = "Dear " + guest + ", you have received an invitation";
@@ -374,6 +441,81 @@ addEventListener("pointerdown", e => {
     document.body.appendChild(s); setTimeout(() => s.remove(), 900);
   }
 });
+
+// ---------- PREMIUM LAYER ----------
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+// scroll progress + hero mandala parallax
+const prog = document.getElementById("prog"), mand = document.querySelector(".mandala");
+let tk = 0;
+addEventListener("scroll", () => { if (tk) return; tk = requestAnimationFrame(() => { tk = 0;
+  const h = document.documentElement.scrollHeight - innerHeight, y = scrollY;
+  prog.style.transform = "scaleX(" + (h > 0 ? Math.min(1, y / h) : 0) + ")";
+  if (!RM && y < innerHeight * 1.2) mand.style.translate = "0 " + (y * .25) + "px";
+}); }, {passive:true});
+
+// gold dust in hero
+const dc = document.getElementById("dust"), dx = dc.getContext("2d");
+let dots = [], dvis = true, dRun = false;
+function dsize(){ const r = hero.getBoundingClientRect(), k = Math.min(devicePixelRatio, 2); dc.width = r.width * k; dc.height = r.height * k; dx.setTransform(k,0,0,k,0,0);
+  const n = Math.round(Math.min(70, r.width / 12)); dots = Array.from({length:n}, () => ({x:Math.random()*r.width,y:Math.random()*r.height,r:.6+Math.random()*1.8,vx:(Math.random()-.5)*.15,vy:-.1-Math.random()*.25,p:Math.random()*6.28})); }
+dsize(); addEventListener("resize", dsize);
+function dframe(){
+  const w = dc.clientWidth, h = dc.clientHeight; dx.clearRect(0,0,w,h);
+  for (const d of dots){ if (!RM){ d.x += d.vx; d.y += d.vy; d.p += .03; }
+    if (d.y < -5){ d.y = h + 5; d.x = Math.random()*w; } if (d.x < -5) d.x = w+5; if (d.x > w+5) d.x = -5;
+    const a = .35 + .35*Math.sin(d.p), g = dx.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r*5);
+    g.addColorStop(0,"rgba(255,226,150,"+a+")"); g.addColorStop(1,"rgba(212,162,76,0)"); dx.fillStyle = g; dx.beginPath(); dx.arc(d.x,d.y,d.r*5,0,6.283); dx.fill(); }
+}
+function dloop(){ dRun = true; if (dvis && !document.hidden) dframe(); if (!RM) requestAnimationFrame(dloop); }
+new IntersectionObserver(e => { dvis = e[0].isIntersecting; }).observe(hero);
+dloop();
+
+// 3D tilt + sheen on invite card
+const card = document.querySelector(".invite .card");
+function tilt(px, py){
+  card.style.setProperty("--ry", (px*9).toFixed(2)+"deg"); card.style.setProperty("--rx", (-py*9).toFixed(2)+"deg");
+  card.style.setProperty("--mx", ((px+1)*50).toFixed(1)+"%"); card.style.setProperty("--my", ((py+1)*50).toFixed(1)+"%");
+}
+if (!RM){
+  card.addEventListener("pointermove", e => { if (e.pointerType === "touch") return; const r = card.getBoundingClientRect(); tilt(((e.clientX-r.left)/r.width-.5)*2, ((e.clientY-r.top)/r.height-.5)*2); });
+  card.addEventListener("pointerleave", () => tilt(0,0));
+  const onOri = e => { if (e.gamma == null) return; tilt(Math.max(-1,Math.min(1,e.gamma/30)), Math.max(-1,Math.min(1,((e.beta||0)-45)/30))); };
+  if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function"){
+    env.addEventListener("click", () => DeviceOrientationEvent.requestPermission().then(r => { if (r === "granted") addEventListener("deviceorientation", onOri); }).catch(()=>{}), {once:true});
+  } else addEventListener("deviceorientation", onOri);
+}
+
+// blessings: hearts + confetti, client-side only
+let wn = 0;
+document.getElementById("wishes").addEventListener("click", e => {
+  const b = e.target.closest(".wish"); if (!b) return;
+  const r = b.getBoundingClientRect(); wn++;
+  if (!RM){ for (let i = 0; i < 7; i++){ const h = document.createElement("span"); h.className = "heart"; h.textContent = ["\u{1F49B}","\u2764\uFE0F","\u{1F338}","\u2728"][i%4];
+    h.style.cssText = "left:"+(r.left+r.width/2+(Math.random()-.5)*60)+"px;top:"+r.top+"px;--hx:"+((Math.random()-.5)*120)+"px;animation-delay:"+(i*.08)+"s";
+    document.body.appendChild(h); setTimeout(() => h.remove(), 2300); }
+    burst(r.left + r.width/2, r.top, 50); }
+  document.getElementById("wcount").textContent = "Your wish \u201c" + b.textContent + "\u201d has been sent with love" + (wn > 1 ? " (" + wn + " wishes)" : "") + ".";
+});
+
+// ambient music (Web Audio, user tap only, off by default)
+const mb = document.getElementById("music"); let ac, master, timer, on = false;
+function startMusic(){
+  ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+  ac.resume(); master = ac.createGain(); master.gain.value = 0; master.connect(ac.destination);
+  master.gain.linearRampToValueAtTime(.12, ac.currentTime + 2);
+  const sa = 146.83, sc = [0,2,4,7,9], bar = 6, pads = [[0,7,12],[-3,4,9],[-5,2,7],[0,7,12]]; // Bhoopali-style pentatonic over D
+  const hz = s => sa * Math.pow(2, s/12);
+  const note = (f,t,d,type,v) => { const o = ac.createOscillator(), g = ac.createGain(); o.type = type; o.frequency.value = f; o.connect(g); g.connect(master);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(v,t+Math.min(.4,d/3)); g.gain.exponentialRampToValueAtTime(.0001,t+d); o.start(t); o.stop(t+d+.05); };
+  let n = 0, next = ac.currentTime + .1;
+  const sched = () => { while (next < ac.currentTime + 6){
+      pads[n%4].forEach(s => { note(hz(s),next,bar+1.5,"sine",.22); note(hz(s)*1.003,next,bar+1.5,"triangle",.08); });
+      for (let i = 0; i < 6; i++) if (Math.random() > .25){ const s = sc[Math.random()*5|0] + (Math.random()>.5?12:24); note(hz(s),next+i*bar/6,1.6,"sine",.2); }
+      next += bar; n++; } };
+  sched(); timer = setInterval(sched, 2000);
+}
+function stopMusic(){ clearInterval(timer); if (master){ master.gain.cancelScheduledValues(ac.currentTime); master.gain.linearRampToValueAtTime(0, ac.currentTime + .6); const m = master; setTimeout(() => m.disconnect(), 800); } }
+mb.addEventListener("click", () => { on = !on; mb.setAttribute("aria-pressed", on); mb.setAttribute("aria-label", on ? "Pause ambient music" : "Play ambient music"); mb.textContent = on ? "\u266B" : "\u266A"; on ? startMusic() : stopMusic(); });
 </script>
 </body>
 </html>
