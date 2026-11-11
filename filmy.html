@@ -305,6 +305,7 @@ footer button{background:none;border:0;color:var(--gold-2);font:inherit;letter-s
   #intro{display:none}
 }
 </style>
+<link rel="stylesheet" href="studio.css"><style>:root{--st-bg:#1a0f10;--st-fg:#f1e3c6;--st-muted:#b9a58a;--st-accent:#e6b95a;--st-accent-fg:#0b0708;--st-line:#a8782a;--st-warn-bg:#f1e3c6;--st-field:#0b0708;--st-font:"Courier Prime","Courier New",monospace;--st-head:"Bebas Neue",Impact,sans-serif;}</style>
 </head>
 <body class="locked">
 <nav class="vsw" aria-label="Invitation style"><a href="classic.html" id="vOld">Classic</a><a href="./" id="vNew">Royal</a><a href="filmy.html" id="vFil" aria-current="page">Filmy</a></nav>
@@ -715,5 +716,6 @@ $("invCopy").addEventListener("click", async () => {
   catch (e) { try { iL.select(); document.execCommand("copy"); iO.textContent = "Link copied"; } catch (e2) { iO.textContent = "Press and hold the link to copy"; } } });
 if (navigator.share){ iS.hidden = false; iS.addEventListener("click", () => navigator.share({title: "SAATH PHERE", text: iL.dataset.msg}).catch(() => {})); }
 </script>
+<script src="studio.js" defer></script>
 </body>
 </html>

@@ -352,6 +352,7 @@ footer button.lnk:hover{color:var(--gold-2)}
 .vsw a{min-width:72px;min-height:38px;display:grid;place-items:center;padding:0 12px;border-radius:999px;font:500 .72rem/1 Jost,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f3d48c;text-decoration:none}
 .vsw a[aria-current]{background:linear-gradient(135deg,#f3d48c,#d4a24c);color:#5a0f1c}
 </style>
+<link rel="stylesheet" href="studio.css"><style>:root{--st-bg:#fff8ec;--st-fg:#3a1d14;--st-muted:#7d5d49;--st-accent:#5a0f1c;--st-accent-fg:#fff8ec;--st-line:#d4a24c;--st-warn-bg:#fdf0d5;--st-font:Jost,system-ui,sans-serif;--st-head:"Great Vibes",cursive;}</style>
 </head>
 <body>
 <nav class="vsw" aria-label="Invitation style"><a href="classic.html" id="vOld" aria-current="page">Classic</a><a href="./" id="vNew">Royal</a><a href="filmy.html" id="vFil">Filmy</a></nav>
@@ -1066,5 +1067,6 @@ const vib = p => { try { navigator.vibrate && navigator.vibrate(p); } catch (e) 
 })();
 </script>
 <script>(function(){var q=location.search;document.getElementById("vNew").href="./"+q;document.getElementById("vOld").href="classic.html"+q;document.getElementById("vFil").href="filmy.html"+q;})();</script>
+<script src="studio.js" defer></script>
 </body>
 </html>

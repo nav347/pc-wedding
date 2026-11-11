@@ -1,0 +1,41 @@
+/* Couple's studio: themed by --st-* variables set per page */
+:root{
+  --st-bg:#fff8ec; --st-fg:#3a1d14; --st-muted:#7d5d49; --st-accent:#5a0f1c; --st-accent-fg:#fff8ec;
+  --st-line:#d4a24c; --st-warn-bg:#fdf0d5; --st-field:#fff; --st-font:Jost,system-ui,sans-serif; --st-head:"Cormorant Garamond",Georgia,serif;
+}
+.st-open{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;margin-top:6px;padding:0 14px;background:none;border:0;color:inherit;font:inherit;font-size:.82rem;letter-spacing:.06em;opacity:.8;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.st-open:hover{opacity:1}
+.st-lock{overflow:hidden!important}
+.st-modal{position:fixed;inset:0;z-index:900;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,4,6,.7);font-family:var(--st-font);line-height:1.5}
+.st-modal.on{display:flex}
+.st-panel{position:relative;box-sizing:border-box;width:100%;max-width:480px;max-height:calc(100dvh - 32px);overflow-y:auto;overflow-x:hidden;background:var(--st-bg);color:var(--st-fg);border:1px solid var(--st-line);border-radius:14px;padding:26px 20px 22px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:stIn .35s ease both}
+.st-panel *{box-sizing:border-box;max-width:100%}
+@keyframes stIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.st-x{position:absolute;top:4px;right:4px;width:44px;height:44px;border:0;background:none;color:var(--st-fg);font-size:1.7rem;line-height:1;cursor:pointer}
+.st-panel h3{font-family:var(--st-head);font-weight:500;font-size:1.6rem;line-height:1.15;margin:0 40px 6px 0;color:var(--st-accent)}
+.st-panel p{margin:0 0 12px;font-size:.95rem;color:var(--st-fg)}
+.st-panel .st-sub{color:var(--st-muted);font-size:.88rem}
+.st-panel label{display:block;margin:14px 0 6px;font-size:.9rem;font-weight:500}
+.st-panel input[type=text],.st-panel textarea{display:block;width:100%;min-height:44px;padding:10px 12px;font:inherit;font-size:16px;color:var(--st-fg);background:var(--st-field);border:1px solid var(--st-line);border-radius:10px}
+.st-panel textarea{min-height:96px;resize:vertical}
+.st-panel :focus-visible{outline:3px solid var(--st-line);outline-offset:2px}
+.st-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;margin-top:14px;font:inherit;font-weight:500;color:var(--st-accent-fg);background:var(--st-accent);border:1px solid var(--st-line);border-radius:999px;cursor:pointer;text-decoration:none}
+.st-btn.ghost{background:none;color:var(--st-accent);margin-right:8px}
+.st-btn[disabled]{opacity:.55;cursor:default}
+.st-msg{min-height:1.4em;margin-top:10px;font-size:.92rem;color:var(--st-accent)}
+.st-warn{margin-top:16px;padding:12px 14px;background:var(--st-warn-bg);border:1px solid var(--st-line);border-left-width:4px;border-radius:10px;font-size:.9rem;color:#3a1d14}
+.st-priv{margin-top:10px;font-size:.84rem;color:var(--st-muted)}
+.st-thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.st-th{position:relative;width:72px;height:72px;border-radius:10px;overflow:hidden;border:1px solid var(--st-line)}
+.st-th img{width:100%;height:100%;object-fit:cover;display:block}
+.st-th button{position:absolute;top:0;right:0;width:44px;height:44px;border:0;background:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:flex-start;justify-content:flex-end;padding:4px 6px;text-shadow:0 0 4px #000,0 0 4px #000}
+.st-file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.st-bar{height:6px;margin:16px 0 8px;border-radius:99px;background:rgba(128,128,128,.25);overflow:hidden}
+.st-bar i{display:block;height:100%;width:40%;background:var(--st-accent);border-radius:99px;animation:stBar 2.2s ease-in-out infinite alternate}
+@keyframes stBar{from{margin-left:0}to{margin-left:60%}}
+.st-vmore{min-width:56px!important;cursor:pointer}
+.st-more{position:fixed;top:64px;left:50%;transform:translateX(-50%);z-index:600;display:none;flex-direction:column;min-width:200px;max-width:calc(100vw - 32px);padding:6px;border-radius:14px;background:var(--st-bg);border:1px solid var(--st-line);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.st-more.on{display:flex}
+.st-more a{min-height:44px;display:flex;align-items:center;padding:0 14px;border-radius:10px;color:var(--st-fg);text-decoration:none;font:500 .9rem var(--st-font);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-more a:hover{background:rgba(128,128,128,.18)}
+@media (prefers-reduced-motion:reduce){.st-panel{animation:none}.st-bar i{animation:none;width:100%;opacity:.6}}
