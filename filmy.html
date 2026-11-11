@@ -86,19 +86,19 @@ body::after{content:"";position:fixed;inset:0;z-index:350;pointer-events:none;op
 .corner.bl{bottom:84px;left:18px}.corner.br{bottom:84px;right:18px;text-align:right}
 .censor{position:absolute;inset:0;display:grid;place-items:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .5s}
 .censor.on{opacity:1;visibility:visible}
-.cert{width:min(100%,340px);background:linear-gradient(160deg,#f4e8cf,#e2cfa6);color:#1d1410;padding:22px 20px 20px;border:2px solid #1d1410;outline:1px solid #1d1410;outline-offset:-8px;text-align:center;transform:rotate(-1.5deg);box-shadow:0 30px 60px rgba(0,0,0,.6);font-family:var(--mono)}
+.cert{position:relative;width:min(100%,340px);background:linear-gradient(160deg,#f4e8cf,#e2cfa6);color:#1d1410;padding:22px 20px 62px;border:2px solid #1d1410;outline:1px solid #1d1410;outline-offset:-8px;text-align:center;transform:rotate(-1.5deg);box-shadow:0 30px 60px rgba(0,0,0,.6);font-family:var(--mono)}
 .cert small{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase}
 .cert .rate{font:400 5.6rem/1 var(--bebas);letter-spacing:.06em;margin:8px 0 0}
 .cert .rate em{font-style:normal;display:inline-block;border:5px solid #1d1410;border-radius:50%;padding:0 20px;margin-right:4px}
 .cert h2{font:700 1.15rem/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;margin:6px 0 12px}
 .cert dl{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;text-align:left;font-size:.8rem;border-top:1px dashed #1d1410;padding-top:12px}
 .cert dt{text-transform:uppercase;letter-spacing:.1em;opacity:.7}.cert dd{font-weight:700}
-.stamp{position:absolute;right:calc(50% - 168px);bottom:calc(50% - 122px);transform:rotate(-14deg);border:3px solid #8c1628;color:#8c1628;font:400 1.5rem/1 var(--bebas);letter-spacing:.12em;padding:4px 10px;opacity:.85;background:rgba(244,232,207,.4)}
+.stamp{position:absolute;right:16px;bottom:14px;transform:rotate(-12deg);border:3px solid #8c1628;color:#8c1628;font:400 1.5rem/1 var(--bebas);letter-spacing:.12em;padding:4px 10px;opacity:.85;background:rgba(244,232,207,.4)}
 .skip{position:absolute;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:5;min-height:44px;min-width:130px;padding:0 22px;border-radius:999px;border:1px solid rgba(255,226,160,.55);background:rgba(0,0,0,.5);color:var(--gold-2);font:400 1.05rem var(--bebas);letter-spacing:.18em;cursor:pointer}
 #intro.reveal-curt .skip{display:none}
 
 /* ---------- common ---------- */
-section{position:relative;padding:84px 22px}
+section{position:relative;padding:64px 22px}
 .wrap{max-width:960px;margin:0 auto}
 .eyebrow{font:400 .78rem var(--mono);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
 .sh{text-align:center;margin-bottom:38px}
@@ -116,7 +116,7 @@ section{position:relative;padding:84px 22px}
 /* ---------- hero poster ---------- */
 .hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:84px 0 56px;overflow:hidden;
   background:radial-gradient(ellipse 60% 55% at 50% 38%,rgba(122,16,32,.55),transparent 70%),linear-gradient(180deg,#120808,var(--black))}
-.beam{position:absolute;top:0;left:0;width:100%;height:85%;background:conic-gradient(from 180deg at 50% 0,transparent 0,rgba(255,226,160,.13) 12deg,transparent 30deg,transparent 330deg,rgba(255,226,160,.13) 348deg,transparent 360deg);pointer-events:none}
+.beam{position:absolute;top:0;left:0;width:100%;height:85%;background:conic-gradient(from 180deg at 50% 0,transparent 0,rgba(255,226,160,.13) 12deg,transparent 30deg,transparent 330deg,rgba(255,226,160,.13) 348deg,transparent 360deg);pointer-events:none;-webkit-mask:linear-gradient(#000 40%,transparent);mask:linear-gradient(#000 40%,transparent)}
 .drape{position:absolute;top:0;bottom:0;width:clamp(20px,7vw,92px);z-index:3;pointer-events:none;
   background:repeating-linear-gradient(90deg,#34060d 0,#8c1628 22%,#b0223a 36%,#8c1628 50%,#34060d 72%,#34060d 100%);background-size:clamp(20px,7vw,92px) 100%}
 .drape::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),transparent 20%,transparent 75%,rgba(0,0,0,.75))}
@@ -176,14 +176,14 @@ body.go .title{animation:fadeup 1.4s cubic-bezier(.2,.7,.2,1) .9s both,glint 6s 
 .gang li i{flex:0 0 auto;min-width:6.4em;font:400 .76rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-style:normal}
 
 /* ---------- plot / trailer ---------- */
-.plot{background:#060404;padding-left:0;padding-right:0}
+.plot{background:#060404;padding-left:0;padding-right:0;padding-bottom:30px}
 .plot::before,.plot::after{content:"";position:absolute;top:0;bottom:0;width:20px;z-index:1;pointer-events:none;
   background:repeating-linear-gradient(180deg,transparent 0 10px,rgba(232,220,192,.5) 10px 24px,transparent 24px 34px) center/9px 100% no-repeat,#0e0909}
 .plot::before{left:0}.plot::after{right:0}
 .plot .wrap{padding:0 38px}
 .plot .sh p{max-width:22em;margin-left:auto;margin-right:auto}
 .scene{position:relative;max-width:640px;margin:0 auto 0;padding:46px 0 58px;text-align:center}
-.scene+.scene{border-top:1px solid #1a1111}
+.scene+.scene{border-top:1px solid #1a1111}.scene:last-child{padding-bottom:20px}
 .sc-no{font:400 .8rem var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 .sc-no i{display:block;font-style:normal;color:var(--mute);margin-top:4px;letter-spacing:.2em}
 .vo{font:italic 600 clamp(1.7rem,7.4vw,2.6rem)/1.2 var(--play);color:var(--gold-2);margin:22px 0 18px;text-shadow:0 2px 30px rgba(230,185,90,.25)}
@@ -206,16 +206,15 @@ body.go .title{animation:fadeup 1.4s cubic-bezier(.2,.7,.2,1) .9s both,glint 6s 
 .shows{background:linear-gradient(180deg,var(--black),#0e0809)}
 .screen{position:relative;height:74px;margin:0 auto 30px;max-width:520px;border-radius:50% 50% 0 0/100% 100% 0 0;background:linear-gradient(180deg,rgba(255,240,200,.85),rgba(255,226,160,.18) 80%,transparent);box-shadow:0 -6px 50px rgba(255,226,160,.35);display:grid;place-items:center}
 .screen span{font:400 .78rem var(--mono);letter-spacing:.3em;text-transform:uppercase;color:#2a1a0a;margin-top:12px}
-.book-top{display:flex;flex-wrap:wrap;gap:14px 22px;justify-content:center;align-items:end;max-width:560px;margin:0 auto 26px}
+.book-top{display:flex;gap:14px;justify-content:center;align-items:flex-end;max-width:560px;margin:0 auto 26px}.book-top .fld:first-child{flex:1 1 auto;min-width:0}
 .fld{display:flex;flex-direction:column;gap:6px;font:400 .72rem var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.fld input[type=text]{height:48px;min-width:0;width:min(100%,230px);padding:0 14px;background:#150d0e;border:1px solid rgba(230,185,90,.55);color:var(--paper);font:400 1rem var(--play);border-radius:3px}
+.fld input[type=text]{height:48px;min-width:0;width:100%;padding:0 14px;background:#150d0e;border:1px solid rgba(230,185,90,.55);color:var(--paper);font:400 1rem var(--play);border-radius:3px}
 .step{display:flex;align-items:center;height:48px;border:1px solid rgba(230,185,90,.55);border-radius:3px;background:#150d0e}
 .step button{width:48px;height:46px;background:none;border:0;color:var(--gold-2);font:400 1.7rem/1 var(--bebas);cursor:pointer}
 .step output{min-width:44px;text-align:center;font:400 1.5rem var(--bebas);color:var(--paper)}
-.showlist{list-style:none;display:grid;gap:14px;max-width:620px;margin:0 auto}
+.showlist{list-style:none;display:grid;gap:22px;max-width:620px;margin:0 auto}
 .show{position:relative;display:grid;grid-template-columns:86px 1fr auto;align-items:center;gap:14px;padding:16px 14px 16px 0;background:linear-gradient(135deg,#1a0d0f,#120a0b);border:1px solid rgba(230,185,90,.28);border-radius:4px}
-.show::before,.show::after{content:"";position:absolute;left:86px;width:16px;height:16px;border-radius:50%;background:var(--black);border:1px solid rgba(230,185,90,.28)}
-.show::before{top:-9px}.show::after{bottom:-9px}
+.show::before{content:"";position:absolute;left:78px;top:-9px;width:16px;height:16px;border-radius:50%;background:var(--black);border:1px solid rgba(230,185,90,.28)}
 .show .t{text-align:center;border-right:1px dashed rgba(230,185,90,.4);align-self:stretch;display:grid;align-content:center}
 .show .t b{font:400 2.1rem/1 var(--bebas);color:var(--gold-2);letter-spacing:.03em}
 .show .t span{font:400 .72rem var(--mono);letter-spacing:.2em;color:var(--mute)}
@@ -226,12 +225,12 @@ body.go .title{animation:fadeup 1.4s cubic-bezier(.2,.7,.2,1) .9s both,glint 6s 
 .show .book{min-height:48px;padding:0 14px;font-size:1.05rem;letter-spacing:.1em}
 .show.main{background:linear-gradient(135deg,var(--velvet),var(--velvet-2));border-color:var(--gold);box-shadow:0 0 40px rgba(122,16,32,.5)}
 .show.main .m p{color:#e9cfb0}
-.show.main::before,.show.main::after{border-color:var(--gold)}
+.show.main::before{border-color:var(--gold)}
 .ribbon{position:absolute;top:-1px;right:12px;transform:translateY(-50%);background:var(--gold);color:#1b0d05;font:400 .8rem var(--bebas);letter-spacing:.16em;padding:3px 10px 2px}
 .tbc{text-align:center;margin-top:24px;font:400 .8rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .tbc small{display:block;margin-top:6px;font:italic 400 .9rem var(--play);letter-spacing:0;text-transform:none;color:var(--mute)}
 .bookall{text-align:center;margin-top:24px}
-@media(max-width:400px){.show{grid-template-columns:70px 1fr;padding:14px 12px 14px 0}.show::before,.show::after{left:70px}.show .book{grid-column:1/-1;margin-left:14px}.show .t b{font-size:1.8rem}.show .t{padding-left:2px}}
+@media(max-width:420px){.show{grid-template-columns:72px 1fr;padding:14px 12px 14px 0}.show::before{left:64px}.show .book{grid-column:1/-1;margin-left:14px;min-height:46px;font-size:1.05rem}.show .t b{font-size:1.8rem}}
 
 /* ---------- reviews ---------- */
 .reviews{background:#0a0607}
@@ -253,20 +252,20 @@ body.go .title{animation:fadeup 1.4s cubic-bezier(.2,.7,.2,1) .9s both,glint 6s 
 .ticket{background:radial-gradient(ellipse at 50% 20%,rgba(122,16,32,.35),transparent 70%),var(--black);text-align:center}
 .tk-in{max-width:420px;margin:0 auto}
 .tk-in .fld{align-items:center;margin-bottom:22px}
-.tk-in .fld input{width:min(100%,320px);text-align:center}
+.tk-in .fld input{width:min(100%,320px);text-align:center}.tk-in .fld{align-items:center}
 #tcv{display:block;width:100%;height:auto;max-width:360px;margin:0 auto;box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 60px rgba(122,16,32,.35);border-radius:6px}
 .tk-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
 .tk-msg{min-height:1.5em;margin-top:12px;font:400 .85rem var(--mono);letter-spacing:.08em;color:var(--gold)}
 
 /* ---------- end credits ---------- */
 .endc{background:#000;padding-bottom:70px}
-.roll{position:relative;height:min(62svh,420px);max-width:520px;margin:0 auto;overflow:hidden;
+.roll{position:relative;height:min(62svh,400px);max-width:520px;margin:0 auto;overflow:hidden;
   -webkit-mask:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);mask:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent)}
 .roll-in{position:absolute;left:0;right:0;top:100%;text-align:center;animation:roll 38s linear infinite paused}
 .endc.run .roll-in{animation-play-state:running}
-@keyframes roll{to{transform:translateY(calc(-100% - min(62svh,420px)))}}
+@keyframes roll{to{transform:translateY(calc(-100% - min(62svh,400px)))}}
 .roll-in h4{font:400 1.05rem var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:46px 0 14px}
-.roll-in p{font:400 1.5rem/1.35 var(--bebas);letter-spacing:.1em;color:var(--paper)}
+.roll-in p{font:400 1.5rem/1.35 var(--bebas);letter-spacing:.1em;color:var(--paper);margin-bottom:16px}
 .roll-in p small{font:italic 400 .95rem var(--play);letter-spacing:0;color:var(--mute);text-transform:none;display:block}
 .roll-in .fin{margin-top:60px;font:400 clamp(3rem,16vw,5rem)/1 var(--bebas);letter-spacing:.1em;color:var(--gold-2)}
 .pcs{max-width:480px;margin:40px auto 0;text-align:center}
@@ -324,9 +323,9 @@ footer button{background:none;border:0;color:var(--gold-2);font:inherit;letter-s
         <small>Board of Wedding Certification</small>
         <div class="rate"><em>U</em>/A</div>
         <h2>Universal Aashirwad</h2>
-        <dl><dt>Title</dt><dd>SAATH PHERE</dd><dt>Running time</dt><dd>Saat Janam</dd><dt>Cuts</dt><dd>None. Dil se pass.</dd><dt>Valid</dt><dd>Is janam mein aur agle saat mein</dd></dl>
+        <dl><dt>Title</dt><dd>SAATH PHERE</dd><dt>Running time</dt><dd>Saat Janam</dd><dt>Cuts</dt><dd>None. Dil se pass.</dd></dl>
+        <span class="stamp">Passed</span>
       </div>
-      <span class="stamp">Passed</span>
     </div>
     <button class="skip" id="skip" type="button">Skip intro</button>
   </div>
@@ -651,42 +650,35 @@ waF.addEventListener("click", () => { waF.href = waLink("all the shows", ""); })
   function draw(){
     const name = clean(tn.value) || "Special Guest";
     c.clearRect(0, 0, W, H); c.fillStyle = "#0b0708"; c.fillRect(0, 0, W, H);
-    const x0 = 36, y0 = 36, w = W - 72, h = H - 72, r = 26, ny = 960, nr = 38;
+    const x0 = 36, y0 = 36, w = W - 72, h = H - 72, r = 26, ny = 1010, nr = 38;
     c.save();
     c.beginPath(); c.roundRect(x0, y0, w, h, r); c.arc(x0, ny, nr, 0, 6.283, true); c.moveTo(x0 + w + nr, ny); c.arc(x0 + w, ny, nr, 0, 6.283, true);
     c.clip("evenodd");
-    let g = c.createLinearGradient(0, y0, 0, y0 + h); g.addColorStop(0, "#8a1424"); g.addColorStop(.55, "#4a0813"); g.addColorStop(1, "#2b040a"); c.fillStyle = g; c.fillRect(x0 - 2, y0, w + 4, h);
+    let g = c.createLinearGradient(0, y0, 0, y0 + h); g.addColorStop(0, "#8a1424"); g.addColorStop(.6, "#4a0813"); g.addColorStop(1, "#2b040a"); c.fillStyle = g; c.fillRect(x0 - 2, y0, w + 4, h);
     g = c.createRadialGradient(W / 2, 330, 20, W / 2, 330, 620); g.addColorStop(0, "rgba(255,200,87,.28)"); g.addColorStop(1, "rgba(255,200,87,0)"); c.fillStyle = g; c.fillRect(x0, y0, w, h);
     for (let i = 0; i < 2600; i++){ c.fillStyle = Math.random() < .5 ? "rgba(255,255,255,.035)" : "rgba(0,0,0,.08)"; c.fillRect(x0 + Math.random() * w, y0 + Math.random() * h, 2, 2); }
     c.restore();
-    // gold borders (top and stub)
     const gold = c.createLinearGradient(0, 0, W, H); [[0, "#a8782a"], [.3, "#ffe2a0"], [.55, "#e6b95a"], [.8, "#fff3c4"], [1, "#a8782a"]].forEach(s => gold.addColorStop(s[0], s[1]));
-    c.strokeStyle = gold; c.lineWidth = 4; c.beginPath(); c.roundRect(x0 + 24, y0 + 24, w - 48, ny - y0 - 70, 10); c.stroke();
-    c.lineWidth = 1.5; c.beginPath(); c.roundRect(x0 + 36, y0 + 36, w - 72, ny - y0 - 94, 6); c.stroke();
+    const bb = ny - 40;
+    c.strokeStyle = gold; c.lineWidth = 4; c.beginPath(); c.roundRect(x0 + 24, y0 + 24, w - 48, bb - y0 - 24, 10); c.stroke();
+    c.lineWidth = 1.5; c.beginPath(); c.roundRect(x0 + 36, y0 + 36, w - 72, bb - y0 - 48, 6); c.stroke();
     c.textBaseline = "alphabetic"; c.textAlign = "center";
-    c.fillStyle = "#ffe2a0"; c.font = "400 30px " + MONO; spaced("ADMIT ONE   ·   CINEMA OF THE HEART", W / 2, 140, 5);
-    c.fillStyle = "#c9b18a"; c.font = "400 28px " + MONO; spaced("PC & NEHA PRESENT", W / 2, 200, 8);
-    c.font = "400 250px " + BEB; g = c.createLinearGradient(0, 230, 0, 700); g.addColorStop(0, "#fff3c4"); g.addColorStop(.5, "#e6b95a"); g.addColorStop(1, "#8f5f1b"); c.fillStyle = g;
-    c.shadowColor = "rgba(230,185,90,.4)"; c.shadowBlur = 30; spaced("SAATH", W / 2, 420, 8); spaced("PHERE", W / 2, 640, 8); c.shadowBlur = 0;
-    c.fillStyle = "#e6b95a"; c.fillRect(W / 2 - 160, 690, 320, 2); c.beginPath(); c.moveTo(W / 2, 678); c.lineTo(W / 2 + 12, 691); c.lineTo(W / 2, 704); c.lineTo(W / 2 - 12, 691); c.closePath(); c.fill();
-    c.fillStyle = "#c9b18a"; c.font = "400 26px " + MONO; spaced("THIS TICKET IS RESERVED FOR", W / 2, 756, 5);
-    let fs = 96; c.font = "italic 600 " + fs + "px " + PLAY; while (c.measureText(name).width > 760 && fs > 36){ fs -= 4; c.font = "italic 600 " + fs + "px " + PLAY; }
-    c.fillStyle = "#ffe2a0"; c.fillText(name, W / 2, 756 + 26 + fs * .85);
-    // info grid
-    const cells = [["SCREEN", "SAATH PHERE"], ["SEAT", "FRONT ROW"], ["SHOW", "2 DEC 2026"], ["RATED", "U/A"]];
-    cells.forEach((p, i) => { const cx = W / 2 + (i % 2 ? 1 : -1) * 215, cy = 880 + (i > 1 ? 0 : 0) + 0; if (i > 1) return; c.fillStyle = "#e6b95a"; c.font = "400 22px " + MONO; spaced(p[0], cx, 884, 5); c.fillStyle = "#f1e3c6"; c.font = "400 64px " + BEB; spaced(p[1], cx, 940 - 0, 4); });
-    // tear line
+    c.fillStyle = "#ffe2a0"; c.font = "400 28px " + MONO; spaced("ADMIT ONE   ·   CINEMA OF THE HEART", W / 2, 132, 4);
+    c.fillStyle = "#c9b18a"; c.font = "400 26px " + MONO; spaced("PC & NEHA PRESENT", W / 2, 186, 8);
+    c.font = "400 240px " + BEB; g = c.createLinearGradient(0, 220, 0, 640); g.addColorStop(0, "#fff3c4"); g.addColorStop(.5, "#e6b95a"); g.addColorStop(1, "#8f5f1b"); c.fillStyle = g;
+    c.shadowColor = "rgba(230,185,90,.4)"; c.shadowBlur = 30; spaced("SAATH", W / 2, 398, 8); spaced("PHERE", W / 2, 606, 8); c.shadowBlur = 0;
+    c.fillStyle = "#e6b95a"; c.fillRect(W / 2 - 160, 650, 320, 2); c.beginPath(); c.moveTo(W / 2, 638); c.lineTo(W / 2 + 12, 651); c.lineTo(W / 2, 664); c.lineTo(W / 2 - 12, 651); c.closePath(); c.fill();
+    c.fillStyle = "#c9b18a"; c.font = "400 24px " + MONO; spaced("THIS TICKET IS RESERVED FOR", W / 2, 712, 5);
+    let fs = 92; c.font = "italic 600 " + fs + "px " + PLAY; while (c.measureText(name).width > 740 && fs > 36){ fs -= 4; c.font = "italic 600 " + fs + "px " + PLAY; }
+    c.fillStyle = "#ffe2a0"; c.fillText(name, W / 2, 800);
+    [["SCREEN", "SAATH PHERE", -215], ["SEAT", "FRONT ROW", 215]].forEach(p => { c.fillStyle = "#e6b95a"; c.font = "400 22px " + MONO; spaced(p[0], W / 2 + p[2], 862, 5); c.fillStyle = "#f1e3c6"; c.font = "400 60px " + BEB; spaced(p[1], W / 2 + p[2], 918, 4); });
     c.setLineDash([14, 12]); c.strokeStyle = "rgba(255,226,160,.6)"; c.lineWidth = 2.5; c.beginPath(); c.moveTo(x0 + nr + 8, ny); c.lineTo(x0 + w - nr - 8, ny); c.stroke(); c.setLineDash([]);
-    // stub
-    const sc = [["SHOW", "2 DEC 2026"], ["RATED", "U/A"]];
-    c.fillStyle = "#e6b95a"; c.font = "400 22px " + MONO; spaced("SHOW", W / 2 - 215, 1030, 5); spaced("RATED", W / 2 + 215, 1030, 5);
-    c.fillStyle = "#f1e3c6"; c.font = "400 64px " + BEB; spaced("2 DEC 2026", W / 2 - 215, 1086, 4); spaced("U/A", W / 2 + 215, 1086, 4);
-    // barcode
-    let hs = hash(name + "pcn"), bx = x0 + 120; const by = 1140, bh = 120; c.fillStyle = "#f1e3c6";
+    [["SHOW", "2 DEC 2026", -215], ["RATED", "U/A", 215]].forEach(p => { c.fillStyle = "#e6b95a"; c.font = "400 22px " + MONO; spaced(p[0], W / 2 + p[2], 1072, 5); c.fillStyle = "#f1e3c6"; c.font = "400 60px " + BEB; spaced(p[1], W / 2 + p[2], 1128, 4); });
+    let hs = hash(name + "pcn"), bx = x0 + 120; const by = 1160, bh = 96; c.fillStyle = "#f1e3c6";
     while (bx < x0 + w - 120){ hs = Math.imul(hs, 1664525) + 1013904223 >>> 0; const bw = 3 + (hs >>> 28) % 5, gap = 3 + (hs >>> 24) % 4; c.fillRect(bx, by, bw, bh); bx += bw + gap; }
-    c.fillStyle = "#c9b18a"; c.font = "400 24px " + MONO; spaced("NO. " + String(hash(name) % 1000000).padStart(6, "0") + "  ·  SEAT 1A", W / 2, 1300, 4);
-    c.fillStyle = "#e6b95a"; c.font = "italic 400 28px " + PLAY; c.fillText("Aashirwad compulsory. Popcorn optional.", W / 2, 1342 - 10);
-    c.fillStyle = "#8f7d64"; c.font = "400 20px " + MONO; spaced("DATES AND VENUES TO BE CONFIRMED", W / 2, 1394 - 20, 3);
+    c.fillStyle = "#c9b18a"; c.font = "400 22px " + MONO; spaced("NO. " + String(hash(name) % 1000000).padStart(6, "0") + "  ·  SEAT 1A", W / 2, 1292, 4);
+    c.fillStyle = "#e6b95a"; c.font = "italic 400 26px " + PLAY; c.fillText("Aashirwad compulsory. Popcorn optional.", W / 2, 1326);
+    c.fillStyle = "#8f7d64"; c.font = "400 18px " + MONO; spaced("DATES AND VENUES TO BE CONFIRMED", W / 2, 1352, 3);
     clearTimeout(t0); t0 = setTimeout(prep, 250);
   }
   function prep(){
