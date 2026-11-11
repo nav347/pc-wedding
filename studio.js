@@ -158,7 +158,7 @@ function stepForm(name){
     });
     fin.value = ""; draw();
   };
-  panel.appendChild(el("div", {"class": "st-warn", role: "note", text: "Heads up: every new version is made by Naveen's AI and uses his tokens. Please use it wisely, a few times at most. Each request is reviewed by Naveen first."}));
+  panel.appendChild(el("div", {"class": "st-warn", role: "note", text: "Heads up: every new version is made by Naveen's AI and uses his tokens. Please use it wisely, a few times at most. Requests are checked automatically for safety."}));
   panel.appendChild(el("p", {"class": "st-priv", text: "Photos you upload will appear on the public invite page."}));
   panel.appendChild(msg);
   var send = el("button", {"class": "st-btn", type: "button", id: "stSend", text: "Make our version"});
@@ -182,9 +182,9 @@ function stepForm(name){
 /* ---------- progress ---------- */
 function waiting(id){
   frame("Your version is being made");
-  panel.appendChild(el("p", {text: "Sent to Naveen. He'll give it the nod soon, then your version takes about 10 minutes. You can keep this window open, or come back later: we will remember it on this phone."}));
+  panel.appendChild(el("p", {text: "Your version takes about 10 minutes once it is cleared. You can keep this window open, or come back later: we will remember it on this phone."}));
   panel.appendChild(el("div", {"class": "st-bar", role: "progressbar", "aria-label": "Making your version"}, [el("i")]));
-  var line = el("p", {"class": "st-sub", "aria-live": "polite", text: "Waiting for Naveen's nod..."});
+  var line = el("p", {"class": "st-sub", "aria-live": "polite", text: "Checking your request…"});
   panel.appendChild(line);
   var b = el("button", {"class": "st-btn ghost", type: "button", text: "Close for now"}); b.onclick = close; panel.appendChild(b);
   function tick(){
@@ -197,8 +197,9 @@ function waiting(id){
       if (s === "failed"){ ls("s", "st_job", ""); return failed(); }
       if (s === "rejected"){ ls("s", "st_job", ""); return rejected(); }
       var pend = s === "pending_approval";
-      line.textContent = pend ? "Sent to Naveen. He'll give it the nod soon, then your version takes about 10 minutes."
-        : s === "building" ? "Being built right now, about 10 minutes..." : "In the queue...";
+      line.textContent = s === "checking" ? "Checking your request…"
+        : pend ? "Sent to Naveen. He'll give it the nod soon, then your version takes about 10 minutes."
+        : s === "building" ? "Being built right now, about 10 minutes..." : "In the queue, about 10 minutes...";
       pollTimer = setTimeout(tick, pend ? POLL_MS * 3 : POLL_MS);
     }).catch(function(){ pollTimer = setTimeout(tick, POLL_MS); });
   }
@@ -206,7 +207,7 @@ function waiting(id){
 }
 function rejected(){
   frame("Not this time");
-  panel.appendChild(el("p", {text: "Naveen could not approve this one. Have a word with him, and try again with a different idea."}));
+  panel.appendChild(el("p", {text: "Sorry, we could not use this request. Please try a simpler one."}));
   var b = el("button", {"class": "st-btn", type: "button", text: "Okay"}); b.onclick = close; panel.appendChild(b); b.focus();
 }
 function failed(){
